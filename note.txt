@@ -1,0 +1,2 @@
+mocha is a unit testing framework
+should is used for assertions

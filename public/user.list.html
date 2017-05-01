@@ -1,0 +1,52 @@
+<div ng-controller="MainController">
+    <div class="row">
+        <!--<div class="col-md-2">-->
+        <!--<button class="btn btn-default" ng-click="increase()">Increase</button>-->
+        <!--</div>-->
+        <!--<div class="col-md-2">-->
+        <!--<label class="form-control">{{count}}</label>-->
+        <!--</div>-->
+        <div class="col-md-1 col-md-offset-11">
+            <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
+                    aria-controls="userForm">
+            </button>
+        </div>
+    </div>
+    <div class="row collapse" id="userForm" aria-expanded="false">
+        <br/>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Rank" ng-model="user.firstName">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="First name" ng-model="user.firstName">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Last name" ng-model="user.lastName">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Birthday" ng-model="user.birthday">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
+        </div>
+        <br/>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
