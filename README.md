@@ -9,3 +9,4 @@ Actions
 2. Run 'bower install'
 3. Run 'npm start' to start application."# HexSpeak" 
 "# HexSpeak" 
+"# HexSpeak" 
