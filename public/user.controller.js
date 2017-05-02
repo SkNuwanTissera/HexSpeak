@@ -8,16 +8,16 @@ angular.module('PharmacyApp').controller('UserController',['UserService','$scope
 
     //1. Get Users
     function getusers() {
-        // $scope.users = [
-        //     {
-        //         firstName:"SK",
-        //         lastName:"Tissera"
-        //     },
-        //     {
-        //         firstName:"Nimansa",
-        //         lastName:"Athukoraala"
-        //     }
-        // ];
+        $scope.users = [
+            {
+                firstName:"SK",
+                lastName:"Tissera"
+            },
+            {
+                firstName:"Nimansa",
+                lastName:"Athukoraala"
+            }
+        ];
 
         UserService.get().then(users => {
             $scope.users = users;
@@ -33,11 +33,17 @@ angular.module('PharmacyApp').controller('UserController',['UserService','$scope
      * */
 
     //1. SetUser
-    $scope.addUser = (user) => {
-        UserService.add(user).then(() => {
-            getusers();
-            user = {};
-        });
-    };
+    function addUser(user) {
+        console.log('hit');
+        $scope.addUser = function(data) {
+            UserService.add(user).then(() => {
+                getusers();
+                user = {};
+            });
+        };
+    }
+
+    $scope.test="Hello";
+
 
 }]);

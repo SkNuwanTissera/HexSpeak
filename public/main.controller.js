@@ -31,13 +31,13 @@ angular.module('PharmacyApp').controller('MainController', ['$scope', 'UserServi
         * SETTERS
         * */
 
-        //1. SetUser
-        $scope.addUser = (user) => {
-            UserService.add(user).then(() => {
-                getusers();
-                user = {};
-            });
-        };
+        // //1. SetUser
+        // $scope.addUser = (user) => {
+        //     UserService.add(user).then(() => {
+        //         getusers();
+        //         user = {};
+        //     });
+        // };
 
         //2. SetItem
         $scope.addItem = (item) => {
@@ -46,6 +46,5 @@ angular.module('PharmacyApp').controller('MainController', ['$scope', 'UserServi
                 item = {};
             });
         };
-
 
     }]);

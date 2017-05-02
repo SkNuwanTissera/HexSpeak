@@ -8,93 +8,26 @@
     <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.css">
 </head>
 <body ng-app="PharmacyApp">
-<!--<div class="container" ng-controller="MainController">-->
-<!--<h2 class="header">Welcome to Driver App</h2>-->
-<!--<div class="row">-->
-<!--<div class="col-md-2">-->
-<!--<button class="btn btn-default" ng-click="increase()">Increase</button>-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<label class="form-control">{{count}}</label>-->
-<!--</div>-->
-<!--<div class="col-md-1 col-md-offset-7">-->
-<!--<button class="btn btn-default pull-right" data-toggle="collapse" data-target="#collapseExample"-->
-<!--aria-controls="collapseExample">+-->
-<!--</button>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="row collapse" id="collapseExample" aria-expanded="false">-->
-<!--<br/>-->
-<!--<div class="col-md-2">-->
-<!--<input type="text" class="form-control" placeholder="Rank" ng-model="driver.ranking">-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<input type="text" class="form-control" placeholder="First name" ng-model="driver.firstName">-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<input type="text" class="form-control" placeholder="Last name" ng-model="driver.lastName">-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<input type="text" class="form-control" placeholder="Birthday" ng-model="driver.birthday">-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<input type="text" class="form-control" placeholder="Vehicle" ng-model="driver.vehicle">-->
-<!--</div>-->
-<!--<div class="col-md-2">-->
-<!--<button class="btn btn-primary pull-right" ng-click="addDriver(driver)">Add</button>-->
-<!--</div>-->
-<!--<br/>-->
-<!--</div>-->
 
-<!--<div class="row">-->
-<!--<table class="table">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>#</th>-->
-<!--<th>First name</th>-->
-<!--<th>Last name</th>-->
-<!--<th>Birthday</th>-->
-<!--<th>Vehicle</th>-->
-<!--<th></th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr ng-repeat="driver in drivers">-->
-<!--<td>{{driver.ranking}}</td>-->
-<!--<td>{{driver.firstName}}</td>-->
-<!--<td>{{driver.lastName}}</td>-->
-<!--<td>{{driver.birthday}}</td>-->
-<!--<td>{{driver.vehicle}}</td>-->
-<!--<td><a>Open</a></td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
-<!--</div>-->
-<!--</div>-->
 <div class="container" ng-controller="UserController">
     <h2 class="header">Welcome</h2>
     <div>
         <div class="row">
-            <!--<div class="col-md-2">-->
-            <!--<button class="btn btn-default" ng-click="increase()">Increase</button>-->
-            <!--</div>-->
-            <!--<div class="col-md-2">-->
-            <!--<label class="form-control">{{count}}</label>-->
-            <!--</div>-->
             <div class="col-md-1 col-md-offset-11">
                 <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
                         aria-controls="userForm">
                 </button>
             </div>
         </div>
+
         <div class="row collapse" id="userForm" aria-expanded="false">
             <br/>
 
             <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="First name" ng-model="firstName">
+                <input type="text" class="form-control" placeholder="First name" ng-model="user.firstName">
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Last name" ng-model="lastName">
+                <input type="text" class="form-control" placeholder="Last name" ng-model="user.lastName">
             </div>
 
 
@@ -106,6 +39,7 @@
             </div>
             <br/>
         </div>
+
 
         <div class="row">
             <table class="table">
@@ -120,6 +54,9 @@
                     <td>{{user.firstName}}</td>
                     <td>{{user.lastName}}</td>
                 </tr>
+
+
+
                 </tbody>
             </table>
         </div>
@@ -129,11 +66,10 @@
 <script src="modules/bootstrap/dist/js/bootstrap.js"></script>
 <script src="modules/angular/angular.js"></script>
 <script src="modules/angular-route/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="app.module.js"></script>
-<script src="user.service.js"></script>
-<script src="main.controller.js"></script>
 <script src="user.controller.js"></script>
-<script src="comments.controller.js"></script>
+<script src="user.service.js"></script>
 <script src="main.routes.js"></script>
 </body>
 </html>
