@@ -11,8 +11,9 @@ const UserModel = mongoose.model('User');
 const Router = express.Router();
 
 Router.get('/', (req, res) => {
+
         UserModel.find().then(users => {
-        res.json("Users:"+users);
+        res.json(users);
 
     }).catch(err => {
         console.error(err);

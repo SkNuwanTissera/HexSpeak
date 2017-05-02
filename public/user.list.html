@@ -1,3 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="PharmacyApp">
 <div ng-controller="MainController">
     <div class="row">
         <!--<div class="col-md-2">-->
@@ -14,26 +16,27 @@
     </div>
     <div class="row collapse" id="userForm" aria-expanded="false">
         <br/>
+
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Rank" ng-model="user.firstName">
+            <input type="text" class="form-control" placeholder="First name" ng-model="firstName">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="First name" ng-model="user.firstName">
-        </div>
-        <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Last name" ng-model="user.lastName">
-        </div>
-        <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Birthday" ng-model="user.birthday">
+            <input type="text" class="form-control" placeholder="Last name" ng-model="lastName">
         </div>
 
+
+        <!--<div class="col-md-2">-->
+            <!--<button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>-->
+        <!--</div>-->
         <div class="col-md-2">
             <button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
         </div>
+        <h1>view : {{firstName}}</h1>
+        <h1>view : {{lastName}}</h1>
         <br/>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller="UserController">
         <table class="table">
             <thead>
             <tr>
@@ -50,3 +53,4 @@
         </table>
     </div>
 </div>
+</body>

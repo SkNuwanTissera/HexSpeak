@@ -71,9 +71,9 @@
 <!--</table>-->
 <!--</div>-->
 <!--</div>-->
-<div class="container" ng-controller="MainController">
+<div class="container" ng-controller="UserController">
     <h2 class="header">Welcome</h2>
-    <div >
+    <div>
         <div class="row">
             <!--<div class="col-md-2">-->
             <!--<button class="btn btn-default" ng-click="increase()">Increase</button>-->
@@ -89,12 +89,18 @@
         </div>
         <div class="row collapse" id="userForm" aria-expanded="false">
             <br/>
+
             <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="First name" ng-model="user.firstName">
+                <input type="text" class="form-control" placeholder="First name" ng-model="firstName">
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Last name" ng-model="user.lastName">
+                <input type="text" class="form-control" placeholder="Last name" ng-model="lastName">
             </div>
+
+
+            <!--<div class="col-md-2">-->
+            <!--<button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>-->
+            <!--</div>-->
             <div class="col-md-2">
                 <button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
             </div>
@@ -126,6 +132,7 @@
 <script src="app.module.js"></script>
 <script src="user.service.js"></script>
 <script src="main.controller.js"></script>
+<script src="user.controller.js"></script>
 <script src="comments.controller.js"></script>
 <script src="main.routes.js"></script>
 </body>
