@@ -3,7 +3,7 @@ should = require('should');
 request = require('supertest');
 
 //importing to testing the app
-const app = require("./server");
+const app = require("./../server");
 
 
 

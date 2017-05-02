@@ -6,11 +6,11 @@ const bodyParser = require('body-parser'),
 
 mongoose.Promise = global.Promise;
 
-require('./user.model.js');
-require('./item.model.js');
+require('./models/user.model.js');
+require('./models/item.model.js');
 
-const UserRouter = require('./user.route');
-const ItemRouter = require('./item.route');
+const UserRouter = require('./routes/user.route.js');
+const ItemRouter = require('./routes/item.route.js');
 
 const app = express();
 
