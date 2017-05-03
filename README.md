@@ -10,3 +10,4 @@ Actions
 3. Run 'npm start' to start application."# HexSpeak" 
 "# HexSpeak" 
 "# HexSpeak" 
+"# HexSpeak_Pharmacy" 
