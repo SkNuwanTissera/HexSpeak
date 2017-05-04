@@ -1,0 +1,60 @@
+<div>
+    <div class="row">
+        <div class="col-md-1 col-md-offset-11">
+            <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
+                    aria-controls="vendorForm">+
+            </button>
+        </div>
+    </div>
+    <div class="row collapse" id="vendorForm" aria-expanded="false">
+        <br/>
+        <div class="col-md-2">
+            <input type="text" value="V001" class="form-control" placeholder="id" ng-model="vendor.id">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="First name" ng-model="vendor.firstName">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Last name" ng-model="vendor.lastName">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Address" ng-model="vendor.address">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Telephone" ng-model="vendor.tp">
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Email" ng-model="vendor.email">
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary pull-right" ng-click="addVendor(vendor)">Add</button>
+        </div>
+        <br/>
+    </div>
+
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Address</th>
+                <th>Telephone</th>
+                <th>Email</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="vendor in vendors">
+                <td>{{vendor.id}}</td>
+                <td>{{vendor.firstName}}</td>
+                <td>{{vendor.lastName}}</td>
+                <td>{{vendor.address}}</td>
+                <td>{{vendor.tp}}</td>
+                <td>{{vendor.email}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
