@@ -8,9 +8,11 @@ mongoose.Promise = global.Promise;
 
 require('./models/user.model.js');
 require('./models/item.model.js');
+require('./models/vendor.model.js');
 
 const UserRouter = require('./routes/user.route.js');
 const ItemRouter = require('./routes/item.route.js');
+const VendorRouter = require('./routes/vendor.route.js');
 
 const app = express();
 
@@ -40,6 +42,11 @@ app.get('/', (req, res, next) => {
 
 app.use('/users', UserRouter);
 app.use('/items', ItemRouter);
+app.use('/vendors',VendorRouter);
+
+app.get('/app/vendors', (req, res, next) => {
+    res.sendFile(__dirname + '/public/vendor.html');
+});
 
 app.get('/app/*', (req, res, next) => {
     res.sendFile(__dirname + '/public/index.html');
