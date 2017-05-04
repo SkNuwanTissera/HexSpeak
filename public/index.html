@@ -6,6 +6,15 @@
     <base href="/app/">
     <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.css">
+    <script src="modules/jquery/dist/jquery.min.js"></script>
+    <script src="modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="modules/angular/angular.js"></script>
+    <script src="modules/angular-route/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="../modules/app.module.js"></script>
+    <script src="../controllers/user.controller.js"></script>
+    <script src="../services/user.service.js"></script>
+    <script src="../routes/main.routes.js"></script>
 </head>
 <body ng-app="PharmacyApp">
 
@@ -15,7 +24,7 @@
         <div class="row">
             <div class="col-md-1 col-md-offset-11">
                 <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
-                        aria-controls="userForm">
+                        aria-controls="userForm">Create User
                 </button>
             </div>
         </div>
@@ -35,7 +44,7 @@
             <!--<button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>-->
             <!--</div>-->
             <div class="col-md-2">
-                <button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
+                <button type="submit" class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
             </div>
             <br/>
         </div>
@@ -47,29 +56,22 @@
                 <tr>
                     <th>First name</th>
                     <th>Last name</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="user in users">
                     <td>{{user.firstName}}</td>
-                    <td>{{user.lastName}}</td>
+                    <td>{{user.lastName}} </td>
+                    <td><input ng-model="user.lastNames" placeholder="lastname"/></td>
+                    <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
+                    <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
                 </tr>
-
-
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<script src="modules/jquery/dist/jquery.min.js"></script>
-<script src="modules/bootstrap/dist/js/bootstrap.js"></script>
-<script src="modules/angular/angular.js"></script>
-<script src="modules/angular-route/angular-route.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="../modules/app.module.js"></script>
-<script src="../controllers/user.controller.js"></script>
-<script src="../services/user.service.js"></script>
-<script src="../routes/main.routes.js"></script>
+
 </body>
 </html>

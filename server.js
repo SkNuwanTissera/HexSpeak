@@ -24,14 +24,22 @@ mongoose.connect('mongodb://localhost:27017/pharmacy', err => {
 });
 
 app.use('/app', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
+app.use('/modules', express.static(__dirname + '/modules'));
+app.use('/controllers', express.static(__dirname + '/controllers'));
+app.use('/models', express.static(__dirname + '/models'));
+app.use('/routes', express.static(__dirname + '/routes'));
+app.use('/services', express.static(__dirname + '/services'));
+app.use('/test', express.static(__dirname + '/test'));
 app.use('/app/modules', express.static(__dirname + '/bower_components'));
+
 
 app.get('/', (req, res, next) => {
     res.sendFile(__dirname + '/public/index.html');
 });
 
 app.use('/users', UserRouter);
-app.use('/items', ItemRouter)
+app.use('/items', ItemRouter);
 
 app.get('/app/*', (req, res, next) => {
     res.sendFile(__dirname + '/public/index.html');

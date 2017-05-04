@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('PharmacyApp').controller('UserController',['UserService','$scope',
+angular.module('PharmacyApp').controller('UserController',['$scope','UserService',
     function ($scope,UserService) {
     /*
      * GETTERS
@@ -8,16 +8,16 @@ angular.module('PharmacyApp').controller('UserController',['UserService','$scope
 
     //1. Get Users
     function getusers() {
-        $scope.users = [
-            {
-                firstName:"SK",
-                lastName:"Tissera"
-            },
-            {
-                firstName:"Nimansa",
-                lastName:"Athukoraala"
-            }
-        ];
+        // $scope .users = [
+        //     {
+        //         firstName:"Nuwan",
+        //         lastName:"Tissera"
+        //     },
+        //     {
+        //         firstName:"Nimansa",
+        //         lastName:"Athukoraala"
+        //     }
+        // ];
 
         UserService.get().then(users => {
             $scope.users = users;
@@ -33,15 +33,26 @@ angular.module('PharmacyApp').controller('UserController',['UserService','$scope
      * */
 
     //1. SetUser
-    function addUser(user) {
-        console.log('hit');
-        $scope.addUser = function(data) {
+
+        $scope.addUser = function(user) {
             UserService.add(user).then(() => {
                 getusers();
                 user = {};
             });
         };
-    }
+
+        $scope.deleteUser = function(id) {
+            UserService.delete(id).then(() => {
+                getusers();
+            });
+        };
+
+
+        $scope.editUser = function(user,id) {
+            UserService.put(user,id).then(() => {
+                getusers();
+            });
+        }
 
     $scope.test="Hello";
 
