@@ -2,14 +2,14 @@
 
 angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorService',
     function ($scope, VendorService) {
-        //Get Vendors
+        //Get All Vendors
         function getVendors() {
             VendorService.get().then(vendors => {
                 $scope.vendors = vendors;
             });
         };
 
-        //Invoking Get Vendors functin to load the table
+        //Invoking Get All Vendors functin to load the table
         getVendors();
 
         //Add new Vendor
@@ -27,4 +27,19 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
                 getVendors();
             });
         };
+
+        //Edit Vendor
+        $scope.editVendor = function(vendor,id) {
+            VendorService.put(vendor,id).then(() => {
+                getVendors();
+            });
+        };
+
+        //Get a particular Vendor
+        $scope.getVendorByID = function (id) {
+            VendorService.getById(id).then(vendor => {
+                $scope.vendor = vendor;
+            });
+        }
+
     }]);

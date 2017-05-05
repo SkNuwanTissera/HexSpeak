@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-1 col-md-offset-11">
             <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                    aria-controls="vendorForm">Add Vendor
+                    aria-controls="vendorForm" onclick="clearFiels()">+Vendor
             </button>
         </div>
     </div>
@@ -29,26 +29,26 @@
         <br/>
         <form id="inputForm">
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="First name" ng-model="vendor.firstName">
+            <input type="text" id="input1" class="form-control" placeholder="First name" ng-model="vendor.firstName">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Last name" ng-model="vendor.lastName">
+            <input type="text" id="input2" class="form-control" placeholder="Last name" ng-model="vendor.lastName">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Address" ng-model="vendor.address">
+            <input type="text" id="input3" class="form-control" placeholder="Address" ng-model="vendor.address">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Telephone" ng-model="vendor.tp">
+            <input type="text" id="input4" class="form-control" placeholder="Telephone" ng-model="vendor.tp">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Email" ng-model="vendor.email">
+            <input type="text" id="input5" class="form-control" placeholder="Email" ng-model="vendor.email">
         </div>
         <div class="col-md-2">
-            <input type="text" class="form-control" placeholder="Companay" ng-model="vendor.company">
+            <input type="text" id="input6" class="form-control" placeholder="Companay" ng-model="vendor.company">
         </div>
         <div class="col-md-2"><br></div>
         <div class="col-md-12">
-            <button class="btn btn-primary pull-right" onclick="document.forms['inputForm'].reset()" ng-click="addVendor(vendor)">Add / Update</button>
+            <button class="btn btn-primary pull-right" onclick="document.forms['inputForm'].reset()" ng-click="addVendor(vendor)">Add</button>
         </div>
         </form>
         <br/>
@@ -65,6 +65,8 @@
                 <th>Telephone</th>
                 <th>Company</th>
                 <th>Email</th>
+                <td><button class="btn btn-info" onclick="clearFiels()" ng-click="editVendor(vendor,vendor._id)" data-toggle="collapse" data-target="#vendorForm"
+                            aria-controls="vendorForm">Update</button></td>
                 <th></th>
             </tr>
             </thead>
@@ -78,12 +80,22 @@
                 <td>COMPANY</td>
                 <td>{{vendor.email}}</td>
                 <td><button class="btn btn-warning" data-toggle="collapse" data-target="#vendorForm"
-                            aria-controls="vendorForm">Edit</button></td>
+                            aria-controls="vendorForm" ng-click="getVendorByID(vendor._id)">Edit</button></td>
                 <td><button class="btn btn-danger" ng-click="deleteVendor(vendor._id)">Delete</button></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
+<script>
+    function clearFiels() {
+        input1.value = "";
+        input2.value = "";
+        input3.value = "";
+        input4.value = "";
+        input5.value = "";
+        input6.value = "";
+    }
+</script>
 </body>
 </html>
