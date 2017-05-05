@@ -7,7 +7,7 @@
     "start": "nodemon server.js",
     "test": "mocha \"./*.test.js\""
   },
-  "author": "",
+  "author": "hexspeak",
   "license": "ISC",
   "dependencies": {
     "body-parser": "1.17.1",
