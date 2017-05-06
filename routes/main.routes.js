@@ -5,9 +5,9 @@ angular.module('PharmacyApp').config(['$routeProvider', '$locationProvider',
         $routeProvider.when('/home', {
             templateUrl: '/public/index.html',
             controller: 'UserController'
-        }).when('/comments/:id', {
-            templateUrl: 'comments.list.html',
-            controller: 'CommentsController'
+        }).when('/vendors', {
+            templateUrl: 'vendor.html',
+            controller: 'VendorController'
         }).otherwise({
             redirectTo: '/home'
         });
