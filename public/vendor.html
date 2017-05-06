@@ -19,6 +19,8 @@
     <!-- Angular js -->
     <script src="modules/angular/angular.js"></script>
     <script src="modules/angular-route/angular-route.js"></script>
+    <script src="modules/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="modules/sweetalert/dist/sweetalert.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../modules/app.module.js"></script>
     <script src="../controllers/vendor.controller.js"></script>
@@ -220,7 +222,7 @@
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-11">
                                     <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                                            aria-controls="vendorForm" onclick="hideUpdateBtn()">Add Vendor
+                                            aria-controls="vendorForm">Add Vendor
                                     </button>
                                 </div>
                             </div>
@@ -279,7 +281,7 @@
 
                                             <div class="hr-line-dashed"></div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
-                                                <div class="col-sm-5"><input type="text" class="form-control"></div><button class="btn btn-danger">-</button>  <button class="btn btn-info">+</button>
+                                                <div class="col-sm-5"><input type="text" id="input7" class="form-control"></div><button class="btn btn-danger">-</button>  <button class="btn btn-info">+</button>
                                             </div>
                                             <div class="hr-line-dashed"></div>
 
@@ -289,7 +291,7 @@
                                                 <div class="col-sm-4 col-sm-offset-2">
                                                     <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Cancel</button>
-                                                    <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels()"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
+                                                    <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels();swal('SUCCESS', 'New vendor successfully added!', 'success');"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Add</button>
                                                     <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels()"  ng-click="editVendor(vendor,vendor._id)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Update</button>
@@ -382,14 +384,14 @@
         input4.value = "";
         input5.value = "";
         input6.value = "";
+        input7.value = "";
     }
     function hideAddBtn(){
         document.getElementById(addBtn).style.hide();
         document.getElementById(updateBtn).style.show();
     }
     function hideUpdateBtn(){
-        document.getElementById(addBtn).style.show();
-        document.getElementById(updateBtn).style.hide();
+        swal("Good job!", "You clicked the button!", "success");
     }
 </script>
 
