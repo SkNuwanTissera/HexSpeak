@@ -5,13 +5,13 @@ const express = require('express'),
 
 mongoose.set('debug', false);
 
-const VendorModel = mongoose.model('Vendor');
-
+const VendorModel = mongoose.model('Vendor'),
+    DrugModel = mongoose.model('Drug');
 
 const Router = express.Router();
 
 Router.get('/', (req, res) => {
-    VendorModel.find().then(vendors => {
+    VendorModel.find().populate('drugs').exec().then(vendors => {
         res.json(vendors);
     }).catch(err => {
         console.error(err);
@@ -20,7 +20,7 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/:id', (req, res) => {
-    VendorModel.findById(req.params.id).then(vendor => {
+    VendorModel.findById(req.params.id).populate('drugs').exec().then(vendor => {
         res.json(vendor || {});
     }).catch(err => {
         console.error(err);
@@ -41,8 +41,8 @@ Router.post('/', (req, res) => {
 Router.put('/:id', (req, res) => {
     const vendor = req.body;
     delete vendor._id;
-    const vendorID = req.params.id;
-    VendorModel.findByIdAndUpdate(vendorID, {$set: vendor}).then(vendorDb => {
+    const vendorId = req.params.id;
+    VendorModel.findByIdAndUpdate(vendorId, {$set: vendor}).then(vendorDb => {
         res.json(vendor);
     }).catch(err => {
         console.error(err);
@@ -51,7 +51,10 @@ Router.put('/:id', (req, res) => {
 });
 
 Router.delete('/:id', (req, res) => {
-    VendorModel.findByIdAndRemove(req.params.id).then(() => {
+    VendorModel.findByIdAndRemove(req.params.id).then((vendor) => {
+        const drugIds = vendor.drugs.map((drugId => drugId));
+        return DrugModel.remove({_id: {$in: drugIds}});
+    }).then(() => {
         res.sendStatus(200);
     }).catch(err => {
         console.error(err);
@@ -59,11 +62,20 @@ Router.delete('/:id', (req, res) => {
     });
 });
 
-// Router.get('/', (req, res) => {
-//     VendorModel.nextCount(function(err, count){
-//         res.send(count.toString());
-//     });
-//
-// });
+Router.post('/:id/drugs', (req, res) => {
+    let drug = new DrugModel(req.body);
+    const vendorId = req.params.id;
+    drug.vendor = vendorId;
+    drug.save().then(drugDb => {
+        return VendorModel.findByIdAndUpdate(vendorId, {$push: {"drugs": drugDb._id}})
+    }).then(() => {
+        return VendorModel.findById(vendorId).populate('drugs').exec();
+    }).then(vendorDb => {
+        res.json(vendorDb);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
 
 module.exports = Router;

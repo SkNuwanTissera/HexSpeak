@@ -29,7 +29,11 @@ const VendorSchema = new Schema({
     },
     company: {
         type: String
-    }
+    },
+    drugs: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Drug'
+    }]
 });
 
 VendorSchema.plugin(autoIncrement.plugin, 'Vendor');
