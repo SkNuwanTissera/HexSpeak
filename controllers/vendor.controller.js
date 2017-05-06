@@ -14,6 +14,8 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
 
         //Add new Vendor
         $scope.addVendor = function(vendor) {
+            $scope.updateBtnState = true;
+            $scope.addBtnState = false;
             VendorService.add(vendor).then(() => {
                 //Update the table after adding new vendor
                 getVendors();
@@ -30,6 +32,8 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
 
         //Edit Vendor
         $scope.editVendor = function(vendor,id) {
+            $scope.updateBtnState = false;
+            $scope.addBtnState = true;
             VendorService.put(vendor,id).then(() => {
                 getVendors();
             });
