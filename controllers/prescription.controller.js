@@ -10,9 +10,28 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
     function getprescription() {
 
 
-        PrescriptionService.get().then(prescriptions => {
-            $scope.prescriptions = prescriptions;
-        });
+        var prescriptions=[{
+            firstName:"Nuwan",
+            lastName:"Tissera",
+            age:"21",
+            gender:"male",
+            height:"186",
+            weight:"75",
+            bloodGroup:"O+",
+            address:"20/21,Nugegoda",
+            contactNo:"0758585463",
+            email:"nuwan@gmai.com",
+            customerType:"registered",
+            doctor:"Dr.Vinu Jethaka",
+           //medicine:"",
+            dateOfIssue:"12/04/2017",
+            dateOfExpire:"12/09/2017",
+            description:"fever"
+        }];
+
+        // PrescriptionService.get().then(prescriptions => {
+        //     $scope.prescriptions = prescriptions;
+        // });
 
     }
     //invoking getPrescription
@@ -45,7 +64,7 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
             });
         }
 
-    $scope.test="Hello";
+
 
 
 }]);

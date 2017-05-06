@@ -348,7 +348,7 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-4 col-sm-offset-2">
                                                             <button class="btn btn-danger" type="submit">Cancel</button>
-                                                            <button class="btn btn-success"  ng-click="addUser(user)">Save changes</button>
+                                                            <button class="btn btn-success"  ng-click="addPrescription(prescription)">Save changes</button>
                                                         </div>
                                                     </div>
                                                 <br/><br/>
@@ -365,15 +365,19 @@
                                         <tr>
                                             <th>First name</th>
                                             <th>Last name</th>
+                                            <th>Age</th>
+                                            <th>Height</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="user in users">
-                                            <td>{{user.firstName}}</td>
-                                            <td>{{user.lastName}} </td>
+                                        <tr ng-repeat="prescription in prescriptions">
+                                            <td>{{prescription.firstName}}</td>
+                                            <td>{{prescription.lastName}} </td>
+                                            <td>{{prescription.age}} </td>
+                                            <td>{{prescription.height}} </td>
                                             <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
-                                            <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
+                                            <td><button class="btn btn-danger" ng-click="editPrescription(prescription, _id)">Edit</button></td>
                                             <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
                                         </tr>
                                         </tbody>

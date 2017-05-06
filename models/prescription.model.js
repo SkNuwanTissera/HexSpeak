@@ -6,10 +6,10 @@ const Schema = mongoose.Schema;
 
 const PrescriptionSchema = new Schema({
 
-    patientId: {
-        type: String,
-        required: true
-    },
+    // patientId: {
+    //     type: String,
+    //     required: true
+    // },
 
     firstName: {
         type: String,
@@ -30,28 +30,28 @@ const PrescriptionSchema = new Schema({
     },
 
     height:{
-        type: String,
-        required: true
+        type: String
+        // required: true
 
     },
 
     weight: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
     bloodGroup: {
         type: String,
-        required: true
+        // required: true
     },
     address: {
         type: String,
-        required: true
+        // required: true
     },
 
     contactNo: {
         type: String,
-        required: true
+        // required: true
     },
 
     email: {
@@ -60,18 +60,18 @@ const PrescriptionSchema = new Schema({
 
     customerType: { //registered or not
         type: String,
-        required: true
+        // required: true
     },
     doctor: {
         type: String,
-        required: true
+        // required: true
     },
 
 
 
-    medicine: {
-        list1: [ ]
-    },
+    // medicine: {
+    //     list1: [ ]
+    // },
 
     dateOfIssue: {
         type: String,
