@@ -8,17 +8,6 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
 
     //1. Get Users
     function getusers() {
-        // $scope .users = [
-        //     {
-        //         firstName:"Nuwan",
-        //         lastName:"Tissera"
-        //     },
-        //     {
-        //         firstName:"Nimansa",
-        //         lastName:"Athukoraala"
-        //     }
-        // ];
-
         UserService.get().then(users => {
             $scope.users = users;
         });

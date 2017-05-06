@@ -1,9 +1,3 @@
-<!--
-*
-*  INSPINIA - Responsive Admin Theme
-*  version 2.6.2
-*
--->
 
 <!DOCTYPE html>
 <html>
@@ -37,20 +31,21 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <!--<script type="text/javascript">-->
-       <!--$(function() {-->
-            <!--window.invalidate_input = function() {-->
-                <!--if ($('input[name=optionsRadios]:checked').val() == "Doctor")-->
-                    <!--$('#txtBoxHospital').removeAttr('disabled');-->
-                <!--else-->
-                    <!--$('#txtBoxHospital').attr('disabled', 'disabled');-->
-            <!--};-->
+    <script type="text/javascript">
 
-            <!--$("input[name=optionsRadios]").change(invalidate_input);-->
+            window.invalidate_input = function() {
+                console.log('hello world');
+                if ($('input[name=optionsRadios]:checked').val() == "Doctor")
+                    $('#txtBoxHospital').removeAttr('disabled');
+                else
+                    $('#txtBoxHospital').attr('disabled', 'disabled');
+            };
 
-            <!--invalidate_input();-->
-        <!--});-->
-    <!--</script>-->
+            $("input[name=optionsRadios]").change(invalidate_input);
+
+            invalidate_input();
+
+    </script>
 </head>
 
 <body  ng-app="PharmacyApp" >
