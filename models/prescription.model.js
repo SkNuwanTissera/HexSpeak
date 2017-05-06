@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PrescriptionSchema = new Schema({
+
+    patientId: {
+        type: String,
+        required: true
+    },
+
     firstName: {
         type: String,
         required: true
@@ -12,16 +18,82 @@ const PrescriptionSchema = new Schema({
     lastName: {
         type: String,
         required: true
-    }
-    //     type: Date,
-    //     required: true
-    // },
-    //
-    // ranking: {
-    //     type: Number,
-    //     unique: true,
-    //     required: true
-    // },
+    },
+    age: {
+        type: String,
+        required: true
+    },
+
+    gender: {
+        type: String,
+        required: true
+    },
+
+    height:{
+        type: String,
+        required: true
+
+    },
+
+    weight: {
+        type: String,
+        required: true
+    },
+
+    bloodGroup: {
+        type: String,
+        required: true
+    },
+    address: {
+        type: String,
+        required: true
+    },
+
+    contactNo: {
+        type: String,
+        required: true
+    },
+
+    email: {
+        type: String,
+        required: true
+    },
+
+    customerType: { //registered or not
+        type: String,
+        required: true
+    },
+    doctor: {
+        type: String,
+        required: true
+    },
+
+
+
+    medicine: {
+        list1: [ ]
+    },
+
+    dateOfIssue: {
+        type: String,
+        required: true
+    },
+
+    dateOfExpire: {
+        type: String,
+        required: true
+    },
+
+    description:{
+        type: String,
+        required: false
+
+    },
+
+
+
+
+
 
 });
 

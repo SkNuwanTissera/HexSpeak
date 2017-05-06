@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('PharmacyApp').controller('PrescriptionController',['$scope','UserService',
-    function ($scope,UserService) {
+angular.module('PharmacyApp').controller('PrescriptionController',['$scope','PrescriptionService',
+    function ($scope,PrescriptionService) {
     /*
      * GETTERS
      * */
 
     //1. Get Prescriptions
-    function getusers() {
+    function getprescription() {
 
 
         PrescriptionService.get().then(prescriptions => {
@@ -15,33 +15,33 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Use
         });
 
     }
-    //invoking getUsers
-    getusers();
+    //invoking getPrescription
+    getprescription();
 
 
     /*
      * SETTERS
      * */
 
-    //1. SetUser
+    //1. Set Prescription
 
-        $scope.addUser = function(prescriptions) {
-            UserService.add(prescription).then(() => {
-                getusers();
-                user = {};
+        $scope.addPrescription = function(prescriptions) {
+            PrescriptionService.add(prescription).then(() => {
+                getprescription();
+                prescriptions = {};
             });
         };
 
-        $scope.deleteUser = function(id) {
-            UserService.delete(id).then(() => {
-                getusers();
+        $scope.deletePrescription = function(id) {
+            PrescriptionService.delete(id).then(() => {
+                getprescription();
             });
         };
 
 
-        $scope.editUser = function(user,id) {
-            UserService.put(user,id).then(() => {
-                getusers();
+        $scope.editPrescription = function(user,id) {
+            PrescriptionService.put(user,id).then(() => {
+                getprescription();
             });
         }
 
