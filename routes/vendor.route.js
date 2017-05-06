@@ -20,7 +20,7 @@ Router.get('/', (req, res) => {
 });
 
 Router.get('/:id', (req, res) => {
-    VendorModel.findById(req.params.id).populate('drugs').exec().then(vendor => {
+    VendorModel.findById(req.params.id).then(vendor => {
         res.json(vendor || {});
     }).catch(err => {
         console.error(err);
