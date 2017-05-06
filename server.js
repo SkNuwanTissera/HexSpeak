@@ -49,7 +49,7 @@ app.get('/app/vendors', (req, res, next) => {
 });
 
 app.get('/app/*', (req, res, next) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/indexx.html');
 });
 
 app.listen(4000, err => {
