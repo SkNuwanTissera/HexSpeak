@@ -55,8 +55,7 @@ const PrescriptionSchema = new Schema({
     },
 
     email: {
-        type: String,
-        required: true
+        type: String
     },
 
     customerType: { //registered or not
@@ -85,8 +84,7 @@ const PrescriptionSchema = new Schema({
     },
 
     description:{
-        type: String,
-        required: false
+        type: String
 
     },
 
