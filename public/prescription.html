@@ -343,6 +343,10 @@
                                         </div>
                                     </div>
                                 </div>
+                            <!---->
+                            <!--TABLE STARTS-->
+
+                            <!---->
                             <div class="row" >
                                 <table class="table">
                                     <thead>
@@ -353,6 +357,11 @@
                                         <th>Gender</th>
                                         <th>Height</th>
                                         <th>Weight</th>
+                                        <th>address</th>
+                                        <th>email</th>
+                                        <th>doctor</th>
+                                        <th>bloodGroup</th>
+                                        <th>contactNo</th>
                                         <th></th>
                                     </tr>
                                     </thead>
@@ -364,6 +373,11 @@
                                         <td>{{prescription.gender}} </td>
                                         <td>{{prescription.height}} </td>
                                         <td>{{prescription.weight}} </td>
+                                        <td>{{prescription.address}} </td>
+                                        <td>{{prescription.email}} </td>
+                                        <td>{{prescription.doctor}} </td>
+                                        <td>{{prescription.bloodGroup}} </td>
+                                        <td>{{prescription.contactNo}} </td>
                                         <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
                                         <td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>
                                         <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
@@ -371,6 +385,10 @@
                                     </tbody>
                                 </table>
                             </div>
+
+
+                            <!--TABLE ENDS-->
+
 
                             </div>
                         </div>
