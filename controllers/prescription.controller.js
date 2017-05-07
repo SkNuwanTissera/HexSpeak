@@ -25,10 +25,10 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
 
     //1. Set Prescription
 
-        $scope.addPrescription = function(prescriptions) {
+        $scope.addPrescription = function(prescription) {
             PrescriptionService.add(prescription).then(() => {
                 getprescription();
-                prescriptions = {};
+                prescription = {};
             });
         };
 

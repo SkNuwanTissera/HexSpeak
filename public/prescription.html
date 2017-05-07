@@ -14,8 +14,8 @@
     <script src="modules/angular-route/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../modules/app.module.js"></script>
-    <script src="../controllers/user.controller.js"></script>
-    <script src="../services/user.service.js"></script>
+    <script src="../controllers/prescription.controller.js"></script>
+    <script src="../services/prescription.service.js"></script>
     <script src="../routes/main.routes.js"></script>
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -255,8 +255,8 @@
                                                            <small class="text-navy">Male | Female </small></label>
 
 
-                                                               <div><label> <input type="radio"  value="male" id="male" name="optionsRadios">  Male </label></div>
-                                                               <div><label> <input type="radio" value="Female" id="" name="Female">  Female</label></div>
+                                                               <div><label> <input type="radio"  ng-model="prescription.gender" value="male" id="male" name="optionsRadios">  Male </label></div>
+                                                               <div><label> <input type="radio" ng-model="prescription.gender" value="Female" id="female" name="optionsRadios">  Female</label></div>
 
                                                        </div>
 
@@ -333,37 +333,45 @@
                                                     <div class="form-group">
                                                         <div class="col-sm-4 col-sm-offset-2">
                                                             <button class="btn btn-danger" type="submit">Cancel</button>
-                                                            <button class="btn btn-success"  ng-click="addUser(user)">Save changes</button>
+                                                            <button class="btn btn-success"  ng-click="addPrescription(prescription)">Save changes</button>
                                                         </div>
                                                     </div>
                                                 <br/><br/>
+                                                   </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            <div class="row" >
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                        <th>Height</th>
+                                        <th>Weight</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="prescription in prescriptions">
+                                        <td>{{prescription.firstName}}</td>
+                                        <td>{{prescription.lastName}} </td>
+                                        <td>{{prescription.age}} </td>
+                                        <td>{{prescription.gender}} </td>
+                                        <td>{{prescription.height}} </td>
+                                        <td>{{prescription.weight}} </td>
+                                        <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
+                                        <td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>
+                                        <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-
-                                <div class="row" >
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>First name</th>
-                                            <th>Last name</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr ng-repeat="user in users">
-                                            <td>{{user.firstName}}</td>
-                                            <td>{{user.lastName}} </td>
-                                            <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
-                                            <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
-                                            <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -25,46 +25,46 @@ const PrescriptionSchema = new Schema({
     },
 
     gender: {
-        type: String,
+        type: String
         // required: true
     },
 
     height:{
-        type: String,
+        type: String
         // required: true
 
     },
 
     weight: {
-        type: String,
+        type: String
         // required: true
     },
 
     bloodGroup: {
-        type: String,
+        type: String
         // required: true
     },
     address: {
-        type: String,
+        type: String
         // required: true
     },
 
     contactNo: {
-        type: String,
+        type: String
         // required: true
     },
 
     email: {
-        type: String,
+        type: String
         // required: true
     },
 
     customerType: { //registered or not
-        type: String,
+        type: String
         // required: true
     },
     doctor: {
-        type: String,
+        type: String
         // required: true
     },
 
@@ -97,6 +97,6 @@ const PrescriptionSchema = new Schema({
 
 });
 
-const Prescription = mongoose.model('User', PrescriptionSchema);
+const Prescription = mongoose.model('Prescription', PrescriptionSchema);
 
 module.exports = Prescription;
