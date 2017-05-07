@@ -43,6 +43,7 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
             });
         }
 
+
     $scope.test="Hello";
 
 

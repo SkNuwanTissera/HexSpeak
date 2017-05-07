@@ -1,0 +1,18 @@
+<div class="ibox-content">
+                <p>
+                    With chosen select uesr can fase chose from large in select input.
+                </p>
+                <div class="form-group">
+                <label class="font-noraml">Basic example</label>
+                <div>
+                <select data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none;">
+                <option value="">Select</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+
+                <option value="Zimbabwe">Zimbabwe</option>
+                </select><div class="chosen-container chosen-container-multi" style="width: 100%;" title=""><ul class="chosen-choices"><li class="search-choice"><span>India</span><a class="search-choice-close" data-option-array-index="105"></a></li><li class="search-choice"><span>Peru</span><a class="search-choice-close" data-option-array-index="176"></a></li><li class="search-choice"><span>Sri Lanka</span><a class="search-choice-close" data-option-array-index="212"></a></li><li class="search-choice"><span>United States</span><a class="search-choice-close" data-option-array-index="1"></a></li><li class="search-field"><input type="text" value="Choose a Country..." class="" autocomplete="off" style="width: 25px;" tabindex="4"></li></ul><div class="chosen-drop"><ul class="chosen-results"><li class="" data-option-array-index="1"><em>Uni</em>ted States</li><li class="active-result" data-option-array-index="2"><em>Uni</em>ted Kingdom</li><li class="active-result" data-option-array-index="222">Tanzania, <em>Uni</em>ted Republic of</li><li class="active-result" data-option-array-index="236"><em>Uni</em>ted Arab Emirates</li><li class="active-result" data-option-array-index="237"><em>Uni</em>ted Kingdom</li><li class="active-result" data-option-array-index="238"><em>Uni</em>ted States</li><li class="active-result" data-option-array-index="239"><em>Uni</em>ted States Minor Outlying Islands</li></ul></div></div>
+                </div>
+                </div>
+
+                </div>

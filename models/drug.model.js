@@ -43,13 +43,15 @@ const DrugSchema = new Schema({
     dateOfExp :{
         type: String,
         required: true
-    }
+    },
 
-
-
+    vendors: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Vendor'
+    }]
 
 });
 
-const Drug = mongoose.model('User', DrugSchema);
+const Drug = mongoose.model('Drug', DrugSchema);
 
 module.exports = Drug;

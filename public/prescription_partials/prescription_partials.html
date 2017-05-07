@@ -1,0 +1,120 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div  class="wrapper wrapper-content">
+            <div  class="col-md-12" ng-controller="UserController">
+                <h2 class="header">User Management</h2>
+                <div>
+                    <div class="row">
+                        <div class="col-md-1 col-md-offset-11">
+                            <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
+                                    aria-controls="userForm">Create User
+                            </button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row collapse" id="userForm" aria-expanded="false">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>Create a New User<small> .  Fill The Form Below</small></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li><a href="#">Config option 1</a>
+                                        </li>
+                                        <li><a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                <form method="get" class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="col-sm-4 control-label">First Name</label>
+                                                <div class="col-sm-6"><input type="text" ng-model = "user.firstName" class="form-control"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"><label class="col-sm-4 control-label">Last Name</label>
+                                                <div class="col-sm-6"><input type="text" ng-model="user.lastName" class="form-control"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
+                                        <div class="col-sm-3"><input type="text" placeholder="+94-775856964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number with Country Code.</span>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Designation <br/>
+                                        <small class="text-navy">Pharmacist | Doctor | Patient</small></label>
+
+                                        <div class="col-sm-10">
+                                            <div><label> <input type="radio" checked="" value="CPharmacist" id="CPharmacist" name="optionsRadios">  Cheif Pharmacist </label></div>
+                                            <div><label> <input type="radio" value="APharmacist" id="APharmacist" name="optionsRadios">  Assistant Pharmacist</label></div>
+                                            <div><label> <input type="radio" value="Doctor" id="Doctor" name="optionsRadios" onclick="window.invalidate_input()"> Doctor</label></div>
+                                            <div><label> <input type="radio" value="Patient" id="Patient" name="optionsRadios">  Patient</label></div>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
+                                    </div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Confirm Password</label>
+                                        <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group"><label class="col-sm-2 control-label">Hospital</label>
+                                        <div class="col-sm-10"><input id="txtBoxHospital" type="text" placeholder=" E.g : National Hospital" class="form-control" disabled></div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="form-group">
+                                        <div class="col-sm-4 col-sm-offset-2">
+                                            <button class="btn btn-danger" type="submit">Cancel</button>
+                                            <button class="btn btn-success"  ng-click="addUser(user)">Save changes</button>
+                                        </div>
+                                    </div>
+                                    <br/><br/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" >
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>First name</th>
+                            <th>Last name</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in users">
+                            <td>{{user.firstName}}</td>
+                            <td>{{user.lastName}} </td>
+                            <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
+                            <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
+                            <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

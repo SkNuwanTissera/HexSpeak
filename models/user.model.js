@@ -12,16 +12,23 @@ const UserSchema = new Schema({
     lastName: {
         type: String,
         required: true
+    },
+    mobile: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+
+    },
+    designation: {
+        type: String,
+
+    },
+    hospital: {
+        type: String
     }
-    //     type: Date,
-    //     required: true
-    // },
-    //
-    // ranking: {
-    //     type: Number,
-    //     unique: true,
-    //     required: true
-    // },
+
 
 });
 
