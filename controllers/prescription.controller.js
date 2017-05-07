@@ -45,7 +45,6 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
             });
         }
 
-    $scope.test="Hello";
 
 
 }]);

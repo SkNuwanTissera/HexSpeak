@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -31,21 +30,7 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-    <script type="text/javascript">
 
-            window.invalidate_input = function() {
-                console.log('hello world');
-                if ($('input[name=optionsRadios]:checked').val() == "Doctor")
-                    $('#txtBoxHospital').removeAttr('disabled');
-                else
-                    $('#txtBoxHospital').attr('disabled', 'disabled');
-            };
-
-            $("input[name=optionsRadios]").change(invalidate_input);
-
-            invalidate_input();
-
-    </script>
 </head>
 
 <body  ng-app="PharmacyApp" >
@@ -72,20 +57,19 @@
                             </ul>
                         </div>
                         <div class="logo-element">
-                            IN+
+                            HEX+
                         </div>
                     </li>
-                    
-                    
 
                     <li class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+
                         <ul class="nav nav-second-level">
                             <li class="active"><a href="#">Cheif Pharmacist</a></li>
                             <li class="active"><a href="#">Assistant Pharmacist</a></li>
                         </ul>
+
                     </li>
-                    
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
@@ -187,7 +171,8 @@
                             </div>
                         </li>
                     </ul>
-                </li><!-- /notification dropdown -->
+                </li>
+                <!-- /notification dropdown -->
 
 
                 <li>
