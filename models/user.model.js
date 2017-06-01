@@ -12,7 +12,19 @@ const UserSchema = new Schema({
     lastName: {
         type: String,
         required: true
-    }
+    },
+    userName: {
+        type: String,
+        required: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    userType: {
+        type: String,
+        required: true
+    },
     //     type: Date,
     //     required: true
     // },

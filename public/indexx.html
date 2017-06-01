@@ -272,16 +272,20 @@
                                                         <small class="text-navy">Pharmacist | Doctor | Patient</small></label>
 
                                                         <div class="col-sm-10">
-                                                            <div><label> <input type="radio" checked="" value="CPharmacist" id="CPharmacist" name="optionsRadios">  Cheif Pharmacist </label></div>
-                                                            <div><label> <input type="radio" value="APharmacist" id="APharmacist" name="optionsRadios">  Assistant Pharmacist</label></div>
-                                                            <div><label> <input type="radio" value="Doctor" id="Doctor" name="optionsRadios" onclick="window.invalidate_input()"> Doctor</label></div>
-                                                            <div><label> <input type="radio" value="Patient" id="Patient" name="optionsRadios">  Patient</label></div>
+                                                            <div><label> <input type="radio" checked="" ng-model = "user.userType" value="CPharmacist" id="CPharmacist" name="optionsRadios">  Chief Pharmacist </label></div>
+                                                            <div><label> <input type="radio" ng-model = "user.userType" value="APharmacist" id="APharmacist" name="optionsRadios">  Assistant Pharmacist</label></div>
+                                                            <div><label> <input type="radio" ng-model = "user.userType" value="Doctor" id="Doctor" name="optionsRadios" onclick="window.invalidate_input()"> Doctor</label></div>
+                                                            <div><label> <input type="radio" ng-model = "user.userType" value="Patient" id="Patient" name="optionsRadios">  Patient</label></div>
                                                         </div>
                                                     </div>
                                                     <div class="hr-line-dashed"></div>
-                                                    <div class="form-group"><label class="col-sm-2 control-label">Password</label>
-                                                        <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
+                                                    <div class="form-group"><label class="col-sm-2 control-label">Username</label>
+                                                        <div class="col-sm-10"><input type="text" ng-model = "user.userName" class="form-control" name="username"></div>
                                                     </div>
+                                                    <div class="form-group"><label class="col-sm-2 control-label">Password</label>
+                                                        <div class="col-sm-10"><input type="password" ng-model = "user.password" class="form-control" name="password"></div>
+                                                    </div>
+                                            <!-- SK it's up to u to take care of confirm passsword part and I have set only username, password n usertype -->
                                                     <div class="form-group"><label class="col-sm-2 control-label">Confirm Password</label>
                                                         <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
                                                     </div>
@@ -310,6 +314,9 @@
                                         <tr>
                                             <th>First name</th>
                                             <th>Last name</th>
+                                            <th>User name</th>
+                                            <th>Password</th>
+                                            <th>User Type</th>
                                             <th></th>
                                         </tr>
                                         </thead>
@@ -317,6 +324,9 @@
                                         <tr ng-repeat="user in users">
                                             <td>{{user.firstName}}</td>
                                             <td>{{user.lastName}} </td>
+                                            <td>{{user.userName}}</td>
+                                            <td>{{user.password}} </td>
+                                            <td>{{user.userType}}</td>
                                             <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
                                             <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
                                             <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
