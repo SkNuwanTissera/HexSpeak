@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title></title>
+    <title>Vendors</title>
 
     <!-- Angular js -->
     <script src="modules/angular/angular.js"></script>
@@ -35,6 +35,9 @@
 
     <!-- Gritter -->
     <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <!-- Chosen -->
+    <link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
 
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -68,8 +71,8 @@
                             <img alt="image" class="img-circle" src="img/profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Tharindu Perera</strong>
+                             </span> <span class="text-muted text-xs block">Pharmacist <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
@@ -281,9 +284,21 @@
 
                                             <div class="hr-line-dashed"></div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
-                                                <div class="col-sm-5"><input type="text" id="input7" class="form-control"></div><button class="btn btn-danger">-</button>  <button class="btn btn-info">+</button>
+                                                <div class="col-sm-10">
+                                                    <select data-placeholder="Choose Drugs" class="chosen-select" multiple="" style="display: none;" tabindex="-1">
+                                                    <option value="United States">Pbruprn</option>
+                                                    <option value="United Kingdom">Ammoximiin</option>
+                                                    <option value="Afghanistan">Panadol</option>
+                                                    <option value="Aland Islands">Piriton</option>
+                                                    <option value="Zimbabwe">Alaride</option>
+                                                </select>
+                                                </div>
                                             </div>
                                             <div class="hr-line-dashed"></div>
+
+                                            <div>
+
+                                            </div>
 
 
 
@@ -375,8 +390,16 @@
 <!-- Toastr -->
 <script src="js/plugins/toastr/toastr.min.js"></script>
 
+
+<!-- Chosen -->
+<script src="js/plugins/chosen/chosen.jquery.js"></script>
+
 <!-- myFunctions -->
 <script>
+    //-- Chosen --
+    $('.chosen-select').chosen({width: "100%"});
+
+    //--clearFields--
     function clearFiels() {
         input1.value = "";
         input2.value = "";
