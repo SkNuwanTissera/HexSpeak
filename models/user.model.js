@@ -25,6 +25,21 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    mobile: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+
+    },
+    designation: {
+        type: String,
+
+    },
+    hospital: {
+        type: String
+    }
     //     type: Date,
     //     required: true
     // },
