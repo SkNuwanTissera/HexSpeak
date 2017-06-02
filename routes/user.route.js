@@ -32,6 +32,7 @@ Router.get('/:id', (req, res) => {
 
 Router.post('/', (req, res) => {
     const user = new UserModel(req.body);
+    user.password = user.generateHash(req.body.password);
     user.save().then(user => {
         res.json(user);
     }).catch(err => {
