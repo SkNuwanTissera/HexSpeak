@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PrescriptionSchema = new Schema({
-
-    patientId: {
-        type: String,
-        required: true
-    },
+    //
+    // patientId: {
+    //     type: String,
+    //     required: true
+    // },
 
     firstName: {
         type: String,
@@ -21,70 +21,72 @@ const PrescriptionSchema = new Schema({
     },
     age: {
         type: String,
-        required: true
+        // required: true
     },
 
     gender: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
     height:{
-        type: String,
-        required: true
+        type: String
+        // required: true
 
     },
 
     weight: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
     bloodGroup: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
     address: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
     contactNo: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
     email: {
         type: String
+        // required: true
     },
 
     customerType: { //registered or not
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
     doctor: {
-        type: String,
-        required: true
+        type: String
+        // required: true
     },
 
 
 
-    medicine: {
-        list1: [ ]
-    },
+    // medicine: {
+    //     list1: [ ]
+    // },
 
     dateOfIssue: {
         type: String,
-        required: true
+        // required: true
     },
 
     dateOfExpire: {
         type: String,
-        required: true
+        // required: true
     },
 
     description:{
-        type: String
+        type: String,
+        // required: false
 
     },
 
@@ -95,6 +97,6 @@ const PrescriptionSchema = new Schema({
 
 });
 
-const Prescription = mongoose.model('User', PrescriptionSchema);
+const Prescription = mongoose.model('Prescription', PrescriptionSchema);
 
 module.exports = Prescription;

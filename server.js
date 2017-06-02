@@ -10,8 +10,10 @@ require('./models/user.model.js');
 require('./models/item.model.js');
 require('./models/vendor.model.js');
 require('./models/drug.model.js');
+require('./models/prescription.model.js');
 
 const UserRouter = require('./routes/user.route.js');
+const PrescriptionRouter = require('./routes/prescription.route.js');
 const ItemRouter = require('./routes/item.route.js');
 const VendorRouter = require('./routes/vendor.route.js');
 const DrugRouter = require('./routes/drug.route.js');
@@ -46,6 +48,7 @@ app.use('/users', UserRouter);
 app.use('/items', ItemRouter);
 app.use('/vendors',VendorRouter);
 app.use('/drugs',DrugRouter);
+app.use('/prescriptions',PrescriptionRouter);
 
 app.get('/app/vendors', (req, res, next) => {
     res.sendFile(__dirname + '/public/vendor.html');
