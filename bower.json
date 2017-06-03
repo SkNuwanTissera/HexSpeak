@@ -17,6 +17,7 @@
   "dependencies": {
     "angular": "^1.6.3",
     "bootstrap": "boostrap#^3.3.7",
-    "angular-route": "^1.6.3"
+    "angular-route": "^1.6.3",
+    "sweetalert":"^1.1.3"
   }
 }

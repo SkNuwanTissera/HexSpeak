@@ -25,7 +25,7 @@
     <script src="../modules/app.module.js"></script>
     <script src="../controllers/vendor.controller.js"></script>
     <script src="../services/vendor.service.js"></script>
-    <script src="../routes/main.routes.js"></script>
+    <script src="../routes/main.route.js"></script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -78,7 +78,7 @@
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.html">Logout</a></li>
+                            <li><a href="login.ejs">Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -306,7 +306,7 @@
                                                 <div class="col-sm-4 col-sm-offset-2">
                                                     <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Cancel</button>
-                                                    <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels();swal('SUCCESS', 'New vendor successfully added!', 'success');"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
+                                                    <button class="btn btn-success" data-toggle="collapse" onclick="successAlert()"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Add</button>
                                                     <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels()"  ng-click="editVendor(vendor,vendor._id)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Update</button>
@@ -366,7 +366,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="js/inspinia.js"></script>
+
 <!-- Flot -->
 <script src="js/plugins/flot/jquery.flot.js"></script>
 <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
@@ -413,8 +413,9 @@
         document.getElementById(addBtn).style.hide();
         document.getElementById(updateBtn).style.show();
     }
-    function hideUpdateBtn(){
+    function successAlert(){
         swal("Good job!", "You clicked the button!", "success");
+        clearFiels();
     }
 </script>
 
