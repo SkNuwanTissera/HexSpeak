@@ -14,29 +14,68 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
 
         //Add new Vendor
         $scope.addVendor = function(vendor) {
-            $scope.updateBtnState = true;
-            $scope.addBtnState = false;
-            VendorService.add(vendor).then(() => {
-                //Update the table after adding new vendor
-                getVendors();
-                vendor = {};
-            });
+            swal({
+                    title: "Do You Really Want To Add This Vendor?",
+                    text: "",
+                    type: "info",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
+                    showLoaderOnConfirm: true,
+                },
+                function(){
+                    setTimeout(function(){
+                        VendorService.add(vendor).then(() => {
+                            //Update the table after adding new vendor
+                            getVendors();
+                            vendor = {};
+                        });
+                        swal("New Vendor Added Successfully!");
+                    }, 1000);
+                });
         };
 
         //Delete a Vendor
         $scope.deleteVendor = function(id) {
-            VendorService.delete(id).then(() => {
-                getVendors();
-            });
+            swal({
+                    title: "Are you sure?",
+                    text: "You will not be able to recover this vendor`s details!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                },
+                function(){
+                    swal("Deleted!", "The vendor has been deleted.", "success");
+                    VendorService.delete(id).then(() => {
+                        getVendors();
+                    });
+                });
         };
 
         //Edit Vendor
         $scope.editVendor = function(vendor,id) {
-            $scope.updateBtnState = false;
-            $scope.addBtnState = true;
-            VendorService.put(vendor,id).then(() => {
-                getVendors();
-            });
+            swal({
+                    title: "Do You Really Want To Save The Changes?",
+                    text: "",
+                    type: "info",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    confirmButtonText: "Yes",
+                    cancelButtonText: "No",
+                    showLoaderOnConfirm: true,
+                },
+                function(){
+                    setTimeout(function(){
+                        VendorService.put(vendor,id).then(() => {
+                            getVendors();
+                        });
+                        swal("Vendor Details Saved!");
+                    }, 1000);
+                });
+
         };
 
         //Get a particular Vendor

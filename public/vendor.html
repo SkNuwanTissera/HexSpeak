@@ -225,7 +225,7 @@
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-11">
                                     <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                                            aria-controls="vendorForm">Add Vendor
+                                            aria-controls="vendorForm" onclick="addBtnFunc()">Add Vendor
                                     </button>
                                 </div>
                             </div>
@@ -306,9 +306,9 @@
                                                 <div class="col-sm-4 col-sm-offset-2">
                                                     <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Cancel</button>
-                                                    <button class="btn btn-success" data-toggle="collapse" onclick="successAlert()"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
+                                                    <button class="btn btn-success" id="addBtn" data-toggle="collapse" onclick="successAlert()"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Add</button>
-                                                    <button class="btn btn-success" data-toggle="collapse" onclick="clearFiels()"  ng-click="editVendor(vendor,vendor._id)" type="submit" data-target="#vendorForm"
+                                                    <button class="btn btn-success" id="updateBtn" data-toggle="collapse" onclick="clearFiels()"  ng-click="editVendor(vendor,vendor._id)" type="submit" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Update</button>
                                                 </div>
                                             </div>
@@ -343,7 +343,7 @@
                                     <td>{{vendor.company}}</td>
                                     <td>{{vendor.email}}</td>
                                     <td><button class="btn btn-warning" ng-click="getVendorByID(vendor._id)" data-toggle="collapse" data-target="#vendorForm"
-                                                aria-controls="vendorForm" onclick="hideAddBtn">Edit</button></td>
+                                                aria-controls="vendorForm" onclick="editBtnFunc()">Edit</button></td>
                                     <td><button class="btn btn-danger" ng-click="deleteVendor(vendor._id)">Delete</button></td>
                                 </tr>
                                 </tbody>
@@ -416,6 +416,29 @@
     function successAlert(){
         swal("Good job!", "You clicked the button!", "success");
         clearFiels();
+    }
+    function addBtnFunc() {
+        document.getElementById('addBtn').style.display='inline';
+        document.getElementById('updateBtn').style.display='none';
+        clearFiels();
+    }
+    function editBtnFunc() {
+        document.getElementById('updateBtn').style.display='inline';
+        document.getElementById('addBtn').style.display='none';
+    }
+    function delConfirm() {
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this vendor`s details!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function(){
+                swal("Deleted!", "The vendor has been deleted.", "success");
+            });
     }
 </script>
 
