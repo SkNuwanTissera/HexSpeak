@@ -1,77 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Angular JS</title>
-    <base href="/app/">
-    <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="modules/bootstrap/dist/css/bootstrap-theme.css">
-    <script src="modules/jquery/dist/jquery.min.js"></script>
-    <script src="modules/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="modules/angular/angular.js"></script>
-    <script src="modules/angular-route/angular-route.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="../modules/app.module.js"></script>
-    <script src="../controllers/user.controller.js"></script>
-    <script src="../services/user.service.js"></script>
-    <script src="../routes/main.route.js"></script>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body ng-app="PharmacyApp">
 
-<div class="container" ng-controller="UserController">
-    <h2 class="header">Welcome</h2>
-    <div>
-        <div class="row">
-            <div class="col-md-1 col-md-offset-11">
-                <button class="btn btn-success pull-right" data-toggle="collapse" data-target="#userForm"
-                        aria-controls="userForm">Create User
-                </button>
-            </div>
-        </div>
+<body>
+<div ng-view ng-app="PharmacyApp">
 
-        <div class="row collapse" id="userForm" aria-expanded="false">
-            <br/>
-
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="First name" ng-model="user.firstName">
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Last name" ng-model="user.lastName">
-            </div>
-
-
-            <!--<div class="col-md-2">-->
-            <!--<button class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>-->
-            <!--</div>-->
-            <div class="col-md-2">
-                <button type="submit" class="btn btn-primary pull-right" ng-click="addUser(user)">Add</button>
-            </div>
-            <br/>
-        </div>
-
-
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="user in users">
-                    <td>{{user.firstName}}</td>
-                    <td>{{user.lastName}} </td>
-                    <td><input ng-model="user.lastNames" placeholder="lastname"/></td>
-                    <td><button class="btn btn-danger" ng-click="editUser(user,user._id)">Edit</button></td>
-                    <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="http://code.angularjs.org/1.2.1/angular-route.min.js"></script>
+<script src="route.config.js"></script>
 </body>
+
 </html>
