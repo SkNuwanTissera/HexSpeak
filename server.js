@@ -92,6 +92,10 @@ app.get('/app/users', (req, res, next) => {
     res.sendFile(__dirname + '/public/user.html');
 });
 
+app.get('/app/drugs', (req, res, next) => {
+    res.sendFile(__dirname + '/public/drug.html');
+});
+
 app.listen(4000, err => {
     if (err) {
         console.error(err);
