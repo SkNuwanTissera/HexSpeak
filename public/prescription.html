@@ -7,16 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title></title>
+    <title>HexSpeak | Prescription</title>
     
     <!-- Angular js -->
-    <script src="modules/angular/angular.js"></script>
-    <script src="modules/angular-route/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js" integrity="sha256-lw0u1cTM3AYG0sY5cKefhETFxDjo/T5GTAppqOwgGPY=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="../modules/app.module.js"></script>
-    <script src="../controllers/prescription.controller.js"></script>
-    <script src="../services/prescription.service.js"></script>
-    <script src="../routes/main.route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="app.module.js"></script>
+    <script src="controllers/prescription.controller.js"></script>
+    <script src="controllers/user.controller.js"></script>
+    <script src="services/prescription.service.js"></script>
+    <script src="services/user.service.js"></script>
+
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -295,32 +299,24 @@
                                                            </div>
                                                        </div>
 
-                                                       <div class="hr-line-dashed"></div>
+
                                                        <div class="form-group"><label class="col-sm-2 control-label">Blood Group</label>
 
-                                                           <div class="col-sm-3"><select class="form-control m-b" name="bloodGroup">
+                                                           <div class="col-sm-3"><select ng-model="prescription.bloodGroup" class="form-control m-b" name="bloodGroup">
                                                                <option>Select</option>
-                                                               <option>B+</option>
-                                                               <option>B-</option>
-                                                               <option>A+</option>
-                                                               <option>A-</option>
-                                                               <option>AB+</option>
-                                                               <option>AB-</option>
-                                                               <option>O+</option>
-                                                               <option>O-</option>
+                                                               <option ng-selected="prescription.bloodGroup=='B+'">B+</option>
+                                                               <option ng-selected="prescription.bloodGroup=='B-'">B-</option>
+                                                               <option ng-selected="prescription.bloodGroup=='A+'">A+</option>
+                                                               <option ng-selected="prescription.bloodGroup=='A-'">A-</option>
+                                                               <option ng-selected="prescription.bloodGroup=='AB+'">AB+</option>
+                                                               <option ng-selected="prescription.bloodGroup=='AB-'">AB-</option>
+                                                               <option ng-selected="prescription.bloodGroup=='O+'">O+</option>
+                                                               <option ng-selected="prescription.bloodGroup=='O-'">O-</option>
                                                            </select>
 
                                                            </div>
                                                        </div>
-                                                       <div class="hr-line-dashed"></div>
 
-                                                       <div class="form-group" >
-                                                       <div class="col-md-5">
-                                                           <div class="input-group date">
-                                                               <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2017">
-                                                           </div>
-                                                       </div>
-                                                   </div>
 
                                                     <div class="hr-line-dashed"></div>
                                                     <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
@@ -379,7 +375,7 @@
                                         <td>{{prescription.bloodGroup}} </td>
                                         <td>{{prescription.contactNo}} </td>
                                         <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
-                                        <td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>
+                                        <!--<td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>-->
                                         <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
                                     </tr>
                                     </tbody>
@@ -394,6 +390,11 @@
                         </div>
                     </div>
                 </div>
+            <!--Reg Patients Section-->
+            
+            <div class="row">
+
+            </div>
             </div>
         </div>        
     </div>

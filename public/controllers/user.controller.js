@@ -6,6 +6,9 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
      * GETTERS
      * */
 
+        $scope.query = {}
+        $scope.queryBy = '$'
+        $scope.orderProp="name";
     //1. Get Users
     function getusers() {
         UserService.get().then(users => {
@@ -28,6 +31,11 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
                 getusers();
                 user = {};
             });
+        };
+
+        $scope.searchUser = function() {
+            user = {};
+            getusers();
         };
 
         $scope.deleteUser = function(id) {

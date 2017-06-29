@@ -25,15 +25,27 @@ const UserSchema = new Schema({
     mobile: {
         type: String,
     },
+    age:{
+        type:Number
+    },
+    height:{
+        type:Number
+    },
+    weight:{
+        type:Number
+    },
     email: {
         type: String,
 
     },
-    designation: {
+    userType: {
         type: String,
 
     },
     hospital: {
+        type: String
+    },
+    bloodGroup:{
         type: String
     }
     //     type: Date,
