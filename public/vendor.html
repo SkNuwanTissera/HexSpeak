@@ -153,7 +153,7 @@
                 <ul class="nav navbar-top-links navbar-right">
 
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to HexSpeak.</span>
                     </li>
 
 
@@ -225,7 +225,7 @@
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-11">
                                     <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                                            aria-controls="vendorForm" onclick="addBtnFunc()">Add Vendor
+                                            aria-controls="vendorForm" onclick="addBtnFunc()" ng-click="resetVendor()">Add Vendor
                                     </button>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@
                                                 <div class="col-sm-10"><input id="input4" type="text" ng-model="vendor.address" class="form-control"></div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                <div class="col-sm-3"><input id="input3" type="text" placeholder="+94-775856964" ng-model="vendor.tp" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number with Country Code.</span>
+                                                <div class="col-sm-3"><input id="input3" type="text" placeholder="0775856964" ng-model="vendor.tp" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number in the Given Format.</span>
                                                 </div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">E-mail</label>
@@ -306,10 +306,8 @@
                                                 <div class="col-sm-4 col-sm-offset-2">
                                                     <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Cancel</button>
-                                                    <button class="btn btn-success" id="addBtn" data-toggle="collapse" onclick="successAlert()"  ng-click="addVendor(vendor)" type="submit" data-target="#vendorForm"
-                                                            aria-controls="vendorForm">Add</button>
-                                                    <button class="btn btn-success" id="updateBtn" data-toggle="collapse" onclick="clearFiels()"  ng-click="editVendor(vendor,vendor._id)" type="submit" data-target="#vendorForm"
-                                                            aria-controls="vendorForm">Update</button>
+                                                    <button class="btn btn-success" id="addBtn" ng-click="addVendor(vendor)" type="submit">Add</button>
+                                                    <button class="btn btn-success" id="updateBtn" ng-click="editVendor(vendor,vendor._id)" type="submit">Update</button>
                                                 </div>
                                             </div>
                                             <br/><br/>
@@ -426,20 +424,7 @@
         document.getElementById('updateBtn').style.display='inline';
         document.getElementById('addBtn').style.display='none';
     }
-    function delConfirm() {
-        swal({
-                title: "Are you sure?",
-                text: "You will not be able to recover this vendor`s details!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Yes, delete it!",
-                closeOnConfirm: false
-            },
-            function(){
-                swal("Deleted!", "The vendor has been deleted.", "success");
-            });
-    }
+
 </script>
 
 
