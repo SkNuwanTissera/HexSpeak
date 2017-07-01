@@ -67,13 +67,23 @@ const PrescriptionSchema = new Schema({
         type: String
         // required: true
     },
+    allergies:{
+        type:String
+    },
+    medicine: [
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
 
-
-
-    // medicine: {
-    //     list1: [ ]
-    // },
-
+        }
+    ],
     dateOfIssue: {
         type: String,
         // required: true

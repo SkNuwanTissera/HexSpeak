@@ -370,18 +370,18 @@
                                                         <div class="col-md-6">
                                                             <div class="col-md-4">
                                                                 <div class="form-group"><label class="col-sm-4 control-label">Age</label>
-                                                                    <div class="col-sm-6"><input type="text" id="age" ng-model = "prescription.age" class="form-control" disabled></div>
+                                                                    <div class="col-sm-6"><input type="text" id="age" ng-model = "user.age" class="form-control" disabled></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">
                                                                 <div class="form-group"><label class="col-sm-4 control-label">Height</label>
-                                                                    <div class="col-sm-6"><input type="text" id="height" ng-model = "prescription.height" class="form-control" disabled></div>
+                                                                    <div class="col-sm-6"><input type="text" id="height" ng-model = "user.height" class="form-control" disabled></div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-4">
                                                                 <div class="form-group"><label class="col-sm-4 control-label">Weight</label>
-                                                                    <div class="col-sm-6"><input type="text" id="weight" ng-model = "prescription.weight" class="form-control" disabled></div>
+                                                                    <div class="col-sm-6"><input type="text" id="weight" ng-model = "user.weight" class="form-control" disabled></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -392,7 +392,7 @@
                                                     <div class="hr-line-dashed"></div>
 
                                                     <div class="form-group"><label class="col-sm-2 control-label">Hospital</label>
-                                                        <div class="col-sm-5"><input id="txtBoxHospital" type="text" placeholder=" E.g : National Hospital" class="form-control" disabled></div>
+                                                        <div class="col-sm-5"><input id="txtBoxHospital" type="text" ng-model="user.hospital" placeholder=" E.g : National Hospital" class="form-control" disabled></div>
                                                     </div>
                                                     <div class="hr-line-dashed"></div>
                                                     <div class="form-group">
@@ -434,7 +434,7 @@
                                             <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
                                             <td><button class="btn btn-success" ng-click="editUser(user,user._id)">Edit</button></td>
                                             <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
-                                            <td><button class="btn btn-primary" onclick="location.href='/app/prescriptions'">Add Prescription</button></td>
+                                            <td><button class="btn btn-primary" ng-click="setCurrentUser(user)" onclick="location.href='/app/prescriptions'">Add Prescription</button></td>
                                         </tr>
                                         </tbody>
                                     </table>

@@ -9,6 +9,7 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
         $scope.query = {}
         $scope.queryBy = '$'
         $scope.orderProp="name";
+         const Currentuser={};
     //1. Get Users
     function getusers() {
         UserService.get().then(users => {
@@ -44,12 +45,31 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
             });
         };
 
+        $scope.setObject = function(user) {
+            $scope.cuser=user;
+        };
+
 
         $scope.editUser = function(user,id) {
             UserService.put(user,id).then(() => {
                 getusers();
             });
         }
+
+        $scope.setCurrentUser = function(user) {
+            UserService.setCuser(user).then(currentUser=>{
+               alert(currentUser);
+            });
+
+        }
+
+        $scope.getCurrentUser = function () {
+            UserService.getCuser().then(currentUser=>{
+                $scope.currentUser=currentUser;
+                alert(currentUser.firstName);
+            })
+        }
+
 
 
     $scope.test="Hello";

@@ -26,13 +26,13 @@ const UserSchema = new Schema({
         type: String,
     },
     age:{
-        type:Number
+        type:String
     },
     height:{
-        type:Number
+        type:String
     },
     weight:{
-        type:Number
+        type:String
     },
     email: {
         type: String,
