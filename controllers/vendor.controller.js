@@ -3,6 +3,8 @@
 angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorService',
     function ($scope, VendorService) {
 
+        $scope.selectedDrugs="jhjhjh";
+
         //Form Validation Function
         function validateForm () {
             var valid=true;
@@ -72,6 +74,15 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
 
         //Invoking Get All Vendors functin to load the table
         getVendors();
+
+        //Get Drugs from DB
+        function getDrugs() {
+            VendorService.getDrugs().then(drugs => {
+                $scope.drugs = drugs;
+            });
+        };
+
+        getDrugs();
 
         //Add new Vendor
         $scope.addVendor = function(vendor) {
