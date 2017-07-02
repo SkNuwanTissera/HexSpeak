@@ -1,12 +1,20 @@
 'use strict';
 
-const bodyParser = require('body-parser'),
-    express = require('express'),
-    mongoose = require('mongoose');
-
+const bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
+var dotenv = require('dotenv');
+const expressValidator = require('express-validator');
+
+//using the dotenv library to load our environmental variables from the .env
+dotenv.load();
+
+var path = require('path');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
 
 mongoose.Promise = global.Promise;
 
@@ -27,6 +35,7 @@ const ItemRouter = require('./routes/item.route.js');
 const VendorRouter = require('./routes/vendor.route.js');
 const DrugRouter = require('./routes/drug.route.js');
 const MainRouter = require('./routes/main.route.js');
+const MailRouter = require('./routes/mail.route.js');
 
 // Init App
 const app = express();
@@ -39,7 +48,25 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+app.set(cookieParser());
 
+//express validation
+app.use(expressValidator({
+    errorFormatter: function(param, msg, value) {
+        var namespace = param.split('.')
+            , root    = namespace.shift()
+            , formParam = root;
+
+        while(namespace.length) {
+            formParam += '[' + namespace.shift() + ']';
+        }
+        return {
+            param : formParam,
+            msg   : msg,
+            value : value
+        };
+    }
+}));
 
 
 // Passport init
@@ -66,7 +93,6 @@ mongoose.connect('mongodb://localhost:27017/pharmacy', err => {
 });
 
 app.use('/app', express.static(__dirname + '/public'));
-app.use('/public', express.static(__dirname + '/public'));
 app.use('/modules', express.static(__dirname + '/modules'));
 app.use('/controllers', express.static(__dirname + '/controllers'));
 app.use('/models', express.static(__dirname + '/models'));
@@ -82,22 +108,31 @@ app.use('/items', ItemRouter);
 app.use('/vendors',VendorRouter);
 app.use('/drugs',DrugRouter);
 app.use('/prescriptions',PrescriptionRouter);
+app.use('/email',MailRouter);
 
 
 app.get('/app/vendors', (req, res, next) => {
     res.sendFile(__dirname + '/public/vendor.html');
 });
 
+app.get('/', (req, res, next) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 app.get('/app/users', (req, res, next) => {
     res.sendFile(__dirname + '/public/user.html');
 });
 
-app.listen(4000, err => {
+app.get('/app/prescriptions', (req, res, next) => {
+    res.sendFile(__dirname + '/public/prescription.html');
+});
+
+app.listen(4500, err => {
     if (err) {
         console.error(err);
         return;
     }
-    console.log('app listening on port 4000');
+    console.log('app listening on port 4500');
 });
 
 //for unit testing

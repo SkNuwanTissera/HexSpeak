@@ -70,7 +70,7 @@ const PrescriptionSchema = new Schema({
     allergies:{
         type:String
     },
-    medicine: [
+    medicine1:
         {
             name:{
                 type:String
@@ -83,7 +83,118 @@ const PrescriptionSchema = new Schema({
             }
 
         }
-    ],
+    ,
+    medicine2:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine3:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine4:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine5:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine6:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine7:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
+    medicine8:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,medicine9:
+        {
+            name:{
+                type:String
+            },
+            cards:{
+                type:String
+            },
+            instructions:{
+                type:String
+            }
+
+        }
+    ,
     dateOfIssue: {
         type: String,
         // required: true

@@ -7,7 +7,9 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
      * */
 
         $scope.query = {}
+        $scope.querySort = {}
         $scope.queryBy = '$'
+        $scope.sort = '$'
         $scope.orderProp="name";
          const Currentuser={};
     //1. Get Users
@@ -46,7 +48,7 @@ angular.module('PharmacyApp').controller('UserController',['$scope','UserService
         };
 
         $scope.setObject = function(user) {
-            $scope.cuser=user;
+            $scope.user=user;
         };
 
 

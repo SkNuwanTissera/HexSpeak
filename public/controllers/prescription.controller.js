@@ -45,6 +45,10 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
             });
         }
 
+        $scope.viewPrescription = function (prescription) {
+            $scope.prescription=prescription;
+        }
+
 
 
 }]);

@@ -15,10 +15,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js" integrity="sha256-lw0u1cTM3AYG0sY5cKefhETFxDjo/T5GTAppqOwgGPY=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
     <script src="app.module.js"></script>
     <script src="controllers/prescription.controller.js"></script>
     <script src="controllers/user.controller.js"></script>
+    <script src="controllers/drugX.controller.js"></script>
     <script src="services/prescription.service.js"></script>
+    <script src="services/drug.service.js"></script>
     <script src="services/user.service.js"></script>
 
     
@@ -308,18 +319,149 @@
                                                                </div>
                                                            </div>
 
-                                                           <div class="col-md-12">
+                                                           <div class="col-md-12"  ng-controller="DrugXController">
                                                                <div class="form-group"><label class="col-sm-2 control-label">Medicine</label>
-                                                                   <!--drug-->
-                                                                   <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine.name">
-                                                                       <option ng-repeat="user in users" value="{{user.firstName}}">{{user.lastName}}</option>
-                                                                   </select>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine1.name">
+                                                                           <option ng-selected="prescription.medicine1.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
 
-                                                                       <span class="help-block m-b-none">E.g: Oxcetol 300mg</span></div>
-                                                                   <div class="col-sm-3"><input type="text" ng-model="prescription.medicine.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none">E.g: 3 </span></div>
-                                                                   <div class="col-sm-3"><input type="text" ng-model="prescription.medicine.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none">E.g: 3 Times Before Meal => 3B</span></div>
+                                                                           <span class="help-block m-b-none">E.g: Oxcetol 300mg</span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine1.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none">E.g: 3 </span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine1.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none">E.g: 3 Times Before Meal => 3B</span></div>
 
+                                                                   </div>
                                                                </div>
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine2.name">
+                                                                           <option ng-selected="prescription.medicine2.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine2.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine2.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine3.name">
+                                                                           <option ng-selected="prescription.medicine3.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine3.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine3.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine4.name">
+                                                                           <option ng-selected="prescription.medicine4.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine4.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine4.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine5.name">
+                                                                           <option ng-selected="prescription.medicine5.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine5.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine5.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine6.name">
+                                                                           <option ng-selected="prescription.medicine6.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine6.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine6.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine7.name">
+                                                                           <option ng-selected="prescription.medicine7.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine7.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine7.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine8.name">
+                                                                           <option ng-selected="prescription.medicine8.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine8.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine8.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
+
+                                                               <div class="form-group"><label class="col-sm-2 control-label"></label>
+                                                                   <div class="row">
+                                                                       <!--drug-->
+                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine9.name">
+                                                                           <option ng-selected="prescription.medicine9.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       </select>
+
+                                                                           <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+
+                                                                   </div>
+                                                               </div>
+
+
+
                                                            </div>
                                                        </div>
 
@@ -341,7 +483,10 @@
                             <!--TABLE STARTS-->
 
                             <!---->
-                            <div class="row" >
+
+
+
+                                <div class="row" >
                                 <table class="table">
                                     <thead>
                                     <tr>
@@ -374,8 +519,78 @@
                                         <td>{{prescription.contactNo}} </td>
                                         <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
                                         <!--<td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>-->
+                                        <td><button class="btn btn-primary" ng-click="viewPrescription(prescription)" data-toggle="collapse" data-target="#displayPrescription"
+                                                    aria-controls="displayPrescription">View</button></td>
                                         <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
+                                        <div class="jumbotron row collapse" id="displayPrescription" aria-expanded="false">
+
+                                            <h5>Prescription Details</h5>
+                                            <button class="btn btn-sm btn-default btn-danger pull-right glyphicon glyphicon-remove " data-toggle="collapse" data-target="#displayPrescription"
+                                                    aria-controls="displayPrescription">Close</button>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine1.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine1.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine1.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine2.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine2.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine2.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine3.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine3.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine3.instructions}}</h4>
+                                                    <strong><h5><button data-toggle="collapse" data-target="#box2"
+                                                                        aria-controls="box2">View More..</button> </h5></strong>
+                                                </div>
+                                            </div>
+
+                                            <div class="row collapse" id="box2" aria-expanded="false">
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine4.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine4.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine4.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine5.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine5.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine5.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine6.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine6.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine6.instructions}}</h4>
+                                                    <strong><h5><button  data-toggle="collapse" data-target="#box3"
+                                                                        aria-controls="box3" onclick="this.innerHTML=='View Less..' ">View More..</button> </h5></strong>
+                                                </div>
+
+                                            </div>
+                                            <div class="row collapse" id="box3" aria-expanded="false">
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine7.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine7.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine7.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine8.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine8.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine8.instructions}}</h4>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h4>Drug Name           : {{prescription.medicine9.name}}</h4>
+                                                    <h4>Quantity            : {{prescription.medicine9.cards}}</h4>
+                                                    <h4>Instructions on Use : {{prescription.medicine9.instructions}}</h4>
+                                                </div>
+                                            </div>
+
+
+
+
+                                        </div>
                                     </tr>
+
                                     </tbody>
                                 </table>
                             </div>

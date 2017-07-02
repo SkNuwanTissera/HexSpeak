@@ -26,7 +26,9 @@
     <script src="app.module.js"></script>
     <script src="controllers/prescription.controller.js"></script>
     <script src="controllers/user.controller.js"></script>
+    <script src="controllers/mail.controller.js"></script>
     <script src="services/prescription.service.js"></script>
+    <script src="services/mail.service.js"></script>
     <script src="services/user.service.js"></script>
 
     
@@ -220,7 +222,7 @@
                                             <td><input  ng-model="query[queryBy]" /></td>
                                         </tr>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <tr>
                                             <td align="right">Search By :</td>
                                             <td>
@@ -235,6 +237,19 @@
                                         <br/>
                                         <br/>
                                         <br/>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <tr>
+                                            <td align="right">Sort By :</td>
+                                            <td>
+                                                <select ng-model="sort">
+                                                    <option value="$"></option>
+                                                    <option value="firstName">FIRST NAME</option>
+                                                    <option value="lastName">LAST NAME</option>
+                                                    <option value="mobile">MOBILE</option>
+                                                </select>
+                                            </td>
+                                        </tr>
                                     </div>
                                 </div>
 
@@ -335,7 +350,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="col-sm-4 control-label">Blood Group</label>
 
-                                                                <div class="col-sm-6"><select ng-model="user.bloodGroup" class="form-control m-b" id="Patient_BG" name="bloodGroup">
+                                                                <div class="col-sm-6"><select ng-model="user.bloodGroup" class="form-control m-b" id="Patient_BG" name="bloodGroup" disabled>
                                                                     <option>Select</option>
                                                                     <option ng-selected="user.bloodGroup=='B+'">B+</option>
                                                                     <option ng-selected="user.bloodGroup=='B-'">B-</option>
@@ -395,10 +410,10 @@
                                                         <div class="col-sm-5"><input id="txtBoxHospital" type="text" ng-model="user.hospital" placeholder=" E.g : National Hospital" class="form-control" disabled></div>
                                                     </div>
                                                     <div class="hr-line-dashed"></div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" ng-controller="MailController">
                                                         <div class="col-sm-4 col-sm-offset-2">
                                                             <button class="btn btn-danger" type="submit">Cancel</button>
-                                                            <button class="btn btn-success"  ng-click="addUser(user)">Save changes</button>
+                                                            <button class="btn btn-success"  ng-click="addUser(user);sendMail(user)">Save changes</button>
                                                         </div>
                                                     </div>
                                                 <br/><br/>
@@ -407,6 +422,76 @@
                                         </div>
                                     </div>
                                 </div>
+
+<!--Edit Form-->
+                            <div class="row collapse" id="userEditForm" aria-expanded="false">
+                                <div class="col-lg-12">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h5>Edit User<small> .  Fill The Form Below</small></h5>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <form method="get" class="form-horizontal">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">First Name</label>
+                                                            <div class="col-sm-6"><input type="text" ng-model = "user.firstName" class="form-control"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Last Name</label>
+                                                            <div class="col-sm-6"><input type="text" ng-model="user.lastName" class="form-control"></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Username</label>
+                                                            <div class="col-sm-6"><input type="text" ng-model = "user.userName" class="form-control" name="username"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Email</label>
+                                                            <div class="col-sm-6"><input type="text" ng-model = "user.email" class="form-control" name="email"></div>
+                                                        </div></div>
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Password</label>
+                                                            <div class="col-sm-6"><input type="password" ng-model = "user.password" class="form-control" name="password"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Confirm Password</label>
+                                                            <div class="col-sm-6"><input type="password" class="form-control" name="password"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
+                                                    <div class="col-sm-3"><input type="text" ng-model="user.mobile" placeholder="+94-775856964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number with Country Code.</span>
+                                                    </div>
+                                                </div>
+
+                                            </form>
+
+
+                                            <div class="form-group">
+                                                <div class="col-sm-4 col-sm-offset-2">
+                                                    <button class="btn btn-danger"  data-toggle="collapse" data-target="#userEditForm"
+                                                            aria-controls="userEditForm"  type="submit">Cancel</button>
+                                                    <button class="btn btn-success"  ng-click="editUser(user,user._id)">Save changes</button>
+                                                </div>
+                                            </div><br/><br/><br/>
+
+
+                                        </div>
+                                    </div></div></div>
+
 
 
                                 <div class="row" >
@@ -425,21 +510,46 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="user in users | filter:query">
+                                        <tr ng-repeat="user in users | filter:query | orderBy : sort ">
                                             <td>{{user.firstName}}</td>
                                             <td>{{user.lastName}} </td>
                                             <td>{{user.mobile}}</td>
                                             <td>{{user.userType}} </td>
                                             <td>{{user.email}}</td>
                                             <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
-                                            <td><button class="btn btn-success" ng-click="editUser(user,user._id)">Edit</button></td>
-                                            <td><button class="btn btn-danger" ng-click="deleteUser(user._id)">Delete</button></td>
+                                            <td><button class="btn btn-success"  data-toggle="collapse" data-target="#userEditForm"
+                                                        aria-controls="userEditForm" ng-click="setObject(user)">Edit</button></td>
+                                            <td><button class="btn btn-warning" ng-click="deleteUser(user._id)">Terminate</button></td>
                                             <td><button class="btn btn-primary" ng-click="setCurrentUser(user)" onclick="location.href='/app/prescriptions'">Add Prescription</button></td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
+                            <br/>
+                            <br/></div>
+                            <br/>
+                            <br/>
+
+<!--Statistics Section-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                            <canvas id="doughnutChart" height="226" width="485" style="display: block; width: 485px; height: 226px;"></canvas>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div><iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                            <canvas id="lineChart" height="226" width="485" style="display: block; width: 485px; height: 226px;"></canvas>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -463,9 +573,10 @@
     <!-- Peity -->
     <script src="js/plugins/peity/jquery.peity.min.js"></script>
     <script src="js/demo/peity-demo.js"></script>
-
-
-
+    <!-- ChartJS-->
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+    <script src="js/ChartsData.js" type="application/javascript"></script>
+    <script src="js/demo/chartjs-demo.js"></script>
     <!-- Custom and plugin javascript -->
 
     <script src="js/plugins/pace/pace.min.js"></script>

@@ -12,7 +12,7 @@ Router.get('/login', function(req, res) {
 });
 
 Router.post('/login', passport.authenticate('local-login', {
-    successRedirect : '/users', // redirect to the secure profile section
+    successRedirect : '/app/users', // redirect to the secure profile section
     failureRedirect : '/app/login', // redirect back to the signup page if there is an error
     failureFlash : true // allow flash messages
 }));
