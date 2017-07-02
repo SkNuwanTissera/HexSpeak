@@ -21,13 +21,20 @@ Router.route('/')
                 res.send(err);
             }
             res.json(drugs);
-            console.log("get is ok");
+
+
+
+            //console.log(date);
+
         });
+        console.log("get is ok");
 
     })
 //adding drug details to the system
     .post(function (req,res) {
         var drug = new DrugModel();
+
+        //var expirydate = req.body.expday +"/"+req.body.expmonth+"/"+req.body.expyear;
         drug.drugName = req.body.drugName;
         drug.drugType = req.body.drugType;
         drug.manufacturer = req.body.manufacturer;
@@ -37,8 +44,10 @@ Router.route('/')
         drug.dateOfExp = req.body.dateOfExp;
         drug.quantity = req.body.quantity;
         drug.batchNo = req.body.batchNo;
-        //drug.vendors = req.body.vendors;
-        console.log("cALL"+req.body.name);
+        drug.batchPrice = req.body.batchPrice;
+        drug.unitPrice = req.body.unitPrice;
+
+        console.log("cALL");
 
         drug.save(function (err)
         {

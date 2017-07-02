@@ -84,14 +84,6 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
         };
 
         getDrugs();
-        
-        //Add Drugs 
-        $scope.addDrugs = function (id, drug) {
-            VendorService.addDrugs(id, drug).then((vendor) => {
-                $scope.vendor = vendor;
-                drug.drugName = '';
-            });
-        };
 
         //Add new Vendor
         $scope.addVendor = function(vendor) {
@@ -113,7 +105,7 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
                             dNames.push($scope.selectedDrugs[index].drugName);
                         }
                         vendor.sellingDrugs = dNames;
-                        vendor.drugs = $scope.selectedDrugs;
+                        // vendor.drugs = $scope.selectedDrugs;
 
                         VendorService.add(vendor).then(() => {
                             //Update the table after adding new vendor
@@ -172,7 +164,7 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
                             dNames.push($scope.selectedDrugs[index].drugName);
                         }
                         vendor.sellingDrugs = dNames;
-                        vendor.drugs = $scope.selectedDrugs;
+                        // vendor.drugs = $scope.selectedDrugs;
                         VendorService.put(vendor,id).then(() => {
                             getVendors();
                         });

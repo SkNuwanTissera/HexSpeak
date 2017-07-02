@@ -1,6 +1,11 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const autoIncrement =require('mongoose-auto-increment');
+
+var connection = mongoose.createConnection('mongodb://localhost:27017/pharmacy');
+
+autoIncrement.initialize(connection);
 
 const Schema = mongoose.Schema;
 
@@ -27,7 +32,7 @@ const DrugSchema = new Schema({
     },
 
     dateOfManufacture :{
-        type: String
+        type: Date
 
     },
 
@@ -37,7 +42,7 @@ const DrugSchema = new Schema({
     },
 
     dateOfExp :{
-        type: String
+        type: Date
 
     },
 
@@ -51,15 +56,24 @@ const DrugSchema = new Schema({
 
     },
 
-    vendors: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Vendor'
-}]
+    batchPrice :{
+            type :String
+    },
+
+    unitPrice :{
+            type : String
+    }
+
+//     vendors: [{
+//     type: Schema.Types.ObjectId,
+//     ref: 'Vendor'
+// }]
 
 
 });
 
-const Drug = mongoose.model('Drug', DrugSchema);
+DrugSchema.plugin(autoIncrement.plugin,'Drug');
+var Drug = connection.model('Drug', DrugSchema);
 
 module.exports = Drug;
 

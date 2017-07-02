@@ -32,6 +32,8 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
 
+    <!-- Calendar view css-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
 </head>
 
@@ -131,6 +133,7 @@
 
                     <li>
                         <span class="m-r-sm text-muted welcome-message">Welcome to Drug Inventory</span>
+
                     </li>
 
 
@@ -202,7 +205,7 @@
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-11">
                                     <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#drugForm"
-                                            aria-controls="drugForm" onclick="hideUpdateBtn()">Add Drug
+                                            aria-controls="drugForm" onclick="hideAddBtn()">Add Drug
                                     </button>
                                 </div>
                             </div>
@@ -236,38 +239,49 @@
                                     <div class="ibox-content">
                                         <form  class="form-horizontal">
                                             <div class="form-group"><label class="col-sm-2 control-label">Drug Name</label>
-                                                <div class="col-sm-10"><input id="input1" type="text" placeholder="Enter the drug name here" ng-model = "drug.drugName" class="form-control"></div>
+                                                <div class="col-sm-4"><input id="inputDrugName" type="text" placeholder="Enter the drug name here" ng-model = "drug.drugName" class="form-control"></div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Drug Type</label>
-                                                <div class="col-sm-10"><input id="input2" type="text" placeholder="Enter the drug type here" ng-model="drug.drugType" class="form-control"></div>
+                                                <div class="col-sm-4"><input id="inputDrugType" type="text" placeholder="Enter the drug type here" ng-model="drug.drugType" class="form-control"></div>
                                             </div>
 
                                             <div class="form-group"><label class="col-sm-2 control-label">Manufacturer</label>
-                                                <div class="col-sm-10"><input id="input4" type="text" placeholder="Enter the manufacturer name here" ng-model="drug.manufacturer" class="form-control"></div>
+                                                <div class="col-sm-4"><input id="inputManufacturer" type="text" placeholder="Enter the manufacturer name here" ng-model="drug.manufacturer" class="form-control"></div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Generic Name</label>
-                                                <div class="col-sm-10"><input id="input3" type="text" placeholder="Enter the generic name of the drug here" ng-model="drug.genericName" class="form-control">
+                                                <div class="col-sm-4"><input id="inputGenericName" type="text" placeholder="Enter the generic name of the drug here" ng-model="drug.genericName" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Date of Manufacture</label>
-                                                <div class="col-sm-10"><input id="input5" type="text" ng-model="drug.dateOfManufacture" class="form-control"></div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Drug Category</label>
-                                                <div class="col-sm-10"><input id="input6" type="text" ng-model="drug.category" class="form-control"></div>
+                                                <div class="col-sm-3"><input id="inputDateOfManufacture" type="date" ng-model="drug.dateOfManufacture" class="form-control"></div>
+
                                             </div>
 
-                                            <div class="form-group"><label class="col-sm-2 control-label">Date Of Expiry</label>
-                                                <div class="col-sm-5"><input type="text" id="input7" class="form-control" ng-model="drug.dateOfExp"></div>
+
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Drug Category</label>
+                                                <div class="col-sm-4"><input id="inputCategory" type="text" ng-model="drug.category" class="form-control"></div>
                                             </div>
+
+                                            <div class="form-group"><label class="col-sm-2 control-label">Date of Expiry</label>
+                                                <div class="col-sm-3"><input id="inputDateOfExpiry" type="date" ng-model="drug.dateOfExp" class="form-control"></div>
+                                            </div>
+
                                             <div class="form-group"><label class="col-sm-2 control-label">Quantity</label>
-                                                <div class="col-sm-10"><input id="input8" type="text" ng-model="drug.quantity" class="form-control"></div>
+                                                <div class="col-sm-4"><input id="inputQuantity" type="number" min="0"  ng-model="drug.quantity" class="form-control"></div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Batch Number</label>
-                                                <div class="col-sm-10"><input id="input9" type="text" ng-model="drug.batchNo" class="form-control"></div>
+                                                <div class="col-sm-4"><input id="inputBatchNo" type="text" ng-model="drug.batchNo" class="form-control"></div>
                                             </div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Batch Price</label>
+                                                <div class="col-sm-4"><input id="inputBatchPrice" type="number" min="0" max="100000" ng-model="drug.batchPrice" class="form-control"></div>
+                                            </div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Selling Price/unit</label>
+                                                <div class="col-sm-4"><input id="inputUnitPrice" type="number" min="0" max="100000" ng-model="drug.unitPrice" class="form-control"></div>
+                                            </div>
+
                                             <div class="form-group"><label class="col-sm-2 control-label">Vendors</label>
-                                                <div class="col-sm-10"><input id="input10" type="text" class="form-control"></div>
+                                                <div class="col-sm-10"><input id="inputVendors" type="text" class="form-control"></div>
                                             </div>
 
 
@@ -280,6 +294,7 @@
                                                             aria-controls="drugForm">Add</button>
                                                     <button class="btn btn-success" id="updateBtn" data-toggle="collapse" onclick="clearFiels()"  ng-click="editDrug(drug,drug._id)"data-target="#drugForm"
                                                             aria-controls="drugForm">Update</button>
+
                                                 </div>
                                             </div>
                                             <br/><br/>
@@ -305,6 +320,8 @@
                                     <th>Quantity</th>
                                     <th>Batch Number</th>
                                     <th>Vendors</th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -368,26 +385,28 @@
 <!-- Toastr -->
 <script src="js/plugins/toastr/toastr.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
-</script>
+<!--<script>-->
+    <!--$(document).ready(function() {-->
+        <!--$('#example').DataTable();-->
+    <!--} );-->
+<!--</script>-->
 
 <!-- myFunctions -->
 <script>
     function clearFiels() {
-        input1.value = "";
-        input2.value = "";
-        input3.value = "";
-        input4.value = "";
-        input5.value = "";
-        input6.value = "";
-        input7.value ="";
-        input8.value ="";
+        inputDrugName.value = "";
+        inputDrugType.value = "";
+        inputManufacturer.value = "";
+        inputGenericName.value = "";
+        inputDateOfManufacture.value = "";
+        inputCategory.value = "";
+        inputDateOfExp.value ="";
+        inputQuantity.value ="";
+        inputBatchNo.value ="";
+        inputVendors.value ="";
     }
     function hideAddBtn(){
-        document.getElementById(addBtn).style.hide();
+        document.getElementById(addBtn).isDisabled = true;
         document.getElementById(updateBtn).style.show();
     }
     function hideUpdateBtn(){
@@ -395,8 +414,15 @@
         document.getElementById(updateBtn).style.hide();
     }
 
+//    $( function() {
+    //        $( "#inputDateOfExp" ).datepicker();
+    //    } );
+
+
 
 </script>
+
+
 
 
 </body>
