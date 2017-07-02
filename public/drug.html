@@ -1,10 +1,3 @@
-<!--
-*
-*  INSPINIA - Responsive Admin Theme
-*  version 2.6.2
-*
--->
-
 <!DOCTYPE html>
 <html>
 
@@ -14,28 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Vendors</title>
-
-    <!-- include the jQuery n Chosen js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
-
-    <!-- include the css and sprite for Chosen-->
-    <link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
-    <link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
-
+    <title></title>
 
     <!-- Angular js -->
     <script src="modules/angular/angular.js"></script>
     <script src="modules/angular-route/angular-route.js"></script>
     <script src="js/angular-chosen.js"></script>
-    <script src="modules/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="modules/sweetalert/dist/sweetalert.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../modules/app.module.js"></script>
-    <script src="../controllers/vendor.controller.js"></script>
-    <script src="../services/vendor.service.js"></script>
-    <script src="../routes/main.route.js"></script>
+    <script src="../controllers/drug.controller.js"></script>
+    <script src="../services/drug.service.js"></script>
+    <script src="../routes/main.routes.js"></script>
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -46,10 +28,10 @@
     <!-- Gritter -->
     <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
-    <!-- Chosen -->
-
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -66,14 +48,14 @@
                             <img alt="image" class="img-circle" src="img/profile_small.jpg" />
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Tharindu Perera</strong>
-                             </span> <span class="text-muted text-xs block">Pharmacist <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">SK Nuwan</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
                             <li><a href="profile.html">Profile</a></li>
                             <li><a href="contacts.html">Contacts</a></li>
                             <li><a href="mailbox.html">Mailbox</a></li>
                             <li class="divider"></li>
-                            <li><a href="login.ejs">Logout</a></li>
+                            <li><a href="login.html">Logout</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">
@@ -148,7 +130,7 @@
                 <ul class="nav navbar-top-links navbar-right">
 
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">Welcome to HexSpeak.</span>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to Drug Inventory</span>
                     </li>
 
 
@@ -209,18 +191,18 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" ng-controller="DrugController">
             <div class="col-lg-12">
-                <div  class="wrapper wrapper-content" ng-controller="VendorController">
+                <div  class="wrapper wrapper-content" >
 
 
                     <div  class="col-md-12">
-                        <h2 class="header">Vendor Management</h2>
+                        <h2 class="header">Drug Inventory</h2>
                         <div>
                             <div class="row">
                                 <div class="col-md-1 col-md-offset-11">
-                                    <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                                            aria-controls="vendorForm" onclick="addBtnFunc()" ng-click="resetVendor()">Add Vendor
+                                    <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#drugForm"
+                                            aria-controls="drugForm" onclick="hideUpdateBtn()">Add Drug
                                     </button>
                                 </div>
                             </div>
@@ -228,11 +210,11 @@
 
                         </div>
 
-                        <div class="row collapse" id="vendorForm" aria-expanded="false" >
+                        <div class="row collapse" id="drugForm" aria-expanded="false" >
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>Create a New Vendor<small> .  Fill The Form Below</small></h5>
+                                        <h5>To add a new Drug to the inventory Please Fill The Form Below...</h5>
                                         <div class="ibox-tools">
                                             <a class="collapse-link">
                                                 <i class="fa fa-chevron-up"></i>
@@ -252,54 +234,52 @@
                                         </div>
                                     </div>
                                     <div class="ibox-content">
-                                        <form method="get" class="form-horizontal">
-                                            <div class="form-group"><label class="col-sm-2 control-label">First Name</label>
-                                                <div class="col-sm-10"><input id="input1" type="text" ng-model = "vendor.firstName" class="form-control"></div>
+                                        <form  class="form-horizontal">
+                                            <div class="form-group"><label class="col-sm-2 control-label">Drug Name</label>
+                                                <div class="col-sm-10"><input id="input1" type="text" placeholder="Enter the drug name here" ng-model = "drug.drugName" class="form-control"></div>
                                             </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Last Name</label>
-                                                <div class="col-sm-10"><input id="input2" type="text" ng-model="vendor.lastName" class="form-control"></div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Drug Type</label>
+                                                <div class="col-sm-10"><input id="input2" type="text" placeholder="Enter the drug type here" ng-model="drug.drugType" class="form-control"></div>
                                             </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Address</label>
-                                                <div class="col-sm-10"><input id="input4" type="text" ng-model="vendor.address" class="form-control"></div>
+
+                                            <div class="form-group"><label class="col-sm-2 control-label">Manufacturer</label>
+                                                <div class="col-sm-10"><input id="input4" type="text" placeholder="Enter the manufacturer name here" ng-model="drug.manufacturer" class="form-control"></div>
                                             </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                <div class="col-sm-3"><input id="input3" type="text" placeholder="0775856964" ng-model="vendor.tp" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number in the Given Format.</span>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Generic Name</label>
+                                                <div class="col-sm-10"><input id="input3" type="text" placeholder="Enter the generic name of the drug here" ng-model="drug.genericName" class="form-control">
                                                 </div>
                                             </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">E-mail</label>
-                                                <div class="col-sm-10"><input id="input5" type="text" ng-model="vendor.email" class="form-control"></div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Date of Manufacture</label>
+                                                <div class="col-sm-10"><input id="input5" type="text" ng-model="drug.dateOfManufacture" class="form-control"></div>
                                             </div>
                                             <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Company</label>
-                                                <div class="col-sm-10"><input id="input6" type="text" ng-model="vendor.company" class="form-control"></div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Drug Category</label>
+                                                <div class="col-sm-10"><input id="input6" type="text" ng-model="drug.category" class="form-control"></div>
                                             </div>
-                                            <div class="hr-line-dashed"></div>
 
-
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
-                                                <div class="col-sm-10">
-                                                    <select id="drugChosen" chosen multiple data-placeholder="Choose Drugs"
-                                                            ng-model="selectedDrugs"
-                                                            ng-options="drug.drugName for drug in drugs">
-                                                    </select>
-                                                </div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Date Of Expiry</label>
+                                                <div class="col-sm-5"><input type="text" id="input7" class="form-control" ng-model="drug.dateOfExp"></div>
                                             </div>
-                                            <div class="hr-line-dashed"></div>
-
-                                            <div>
-
+                                            <div class="form-group"><label class="col-sm-2 control-label">Quantity</label>
+                                                <div class="col-sm-10"><input id="input8" type="text" ng-model="drug.quantity" class="form-control"></div>
+                                            </div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Batch Number</label>
+                                                <div class="col-sm-10"><input id="input9" type="text" ng-model="drug.batchNo" class="form-control"></div>
+                                            </div>
+                                            <div class="form-group"><label class="col-sm-2 control-label">Vendors</label>
+                                                <div class="col-sm-10"><input id="input10" type="text" class="form-control"></div>
                                             </div>
 
 
 
                                             <div class="form-group">
                                                 <div class="col-sm-4 col-sm-offset-2">
-                                                    <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
-                                                            aria-controls="vendorForm" ng-click="resetVendor()">Cancel</button>
-                                                    <button class="btn btn-success" id="addBtn" ng-click="addVendor(vendor)" type="submit">Add</button>
-                                                    <button class="btn btn-success" id="updateBtn" ng-click="editVendor(vendor,vendor._id)" type="submit">Update</button>
+                                                    <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#drugForm"
+                                                            aria-controls="drugForm">Cancel</button>
+                                                    <button class="btn btn-success" id="addBtn" data-toggle="collapse" onclick="clearFiels()"  ng-click="addDrug(drug)" data-target="#drugForm"
+                                                            aria-controls="drugForm">Add</button>
+                                                    <button class="btn btn-success" id="updateBtn" data-toggle="collapse" onclick="clearFiels()"  ng-click="editDrug(drug,drug._id)"data-target="#drugForm"
+                                                            aria-controls="drugForm">Update</button>
                                                 </div>
                                             </div>
                                             <br/><br/>
@@ -310,90 +290,49 @@
                         </div>
 
 
-                        <div class="row" >
-                            <table class="table">
+                        <div class="row">
+                            <table   class="table">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Address</th>
-                                    <th>Telephone</th>
-                                    <th>Company</th>
-                                    <th>Email</th>
+
+                                    <th>Drug Name</th>
+                                    <th>Drug Type</th>
+                                    <th>Manufacturer</th>
+                                    <th>Generic Name</th>
+                                    <th>Date of Manufacture</th>
+                                    <th>Drug Category</th>
+                                    <th>Date Of Expiry</th>
+                                    <th>Quantity</th>
+                                    <th>Batch Number</th>
+                                    <th>Vendors</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="vendor in vendors">
-                                    <td>V 00{{vendor._id+1}}</td>
-                                    <td>{{vendor.firstName}}</td>
-                                    <td>{{vendor.lastName}}</td>
-                                    <td>{{vendor.address}}</td>
-                                    <td>{{vendor.tp}}</td>
-                                    <td>{{vendor.company}}</td>
-                                    <td>{{vendor.email}}</td>
-                                    <td><button data-toggle="modal" class="btn btn-primary" href="#modal-form" ng-click="getVendorByID(vendor._id)">View</button></td>
-                                    <td><button class="btn btn-warning" ng-click="getVendorByID(vendor._id)" data-toggle="collapse" data-target="#vendorForm"
-                                                aria-controls="vendorForm" onclick="editBtnFunc()">Edit</button></td>
-                                    <td><button class="btn btn-danger" ng-click="deleteVendor(vendor._id)">Delete</button></td>
+                                <tr ng-repeat="drug in drugs">
+
+                                    <td>{{drug.drugName}}</td>
+                                    <td>{{drug.drugType}}</td>
+                                    <td>{{drug.manufacturer}}</td>
+                                    <td>{{drug.genericName}}</td>
+                                    <td>{{drug.dateOfManufacture}}</td>
+                                    <td>{{drug.category}}</td>
+                                    <td>{{drug.dateOfExp}}</td>
+                                    <td>{{drug.quantity}}</td>
+                                    <td>{{drug.batchNo}}</td>
+                                    <td>{{drug.vendors}}</td>
+                                    <td><button class="btn btn-warning"  ng-click="getDrugUsingId(drug._id)" data-toggle="collapse" data-target="#drugForm"
+                                                aria-controls="drugForm" onclick="hideAddBtn">Edit</button></td>
+                                    <td><button class="btn btn-danger" ng-click="deleteDrug(drug._id)">Delete</button></td>
                                 </tr>
                                 </tbody>
                             </table>
-
-
-
-                            <!--View Window-->
-                            <div id="modal-form" class="modal fade" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="ibox-content">
-                                                    <form method="get" class="form-horizontal">
-                                                        <div class="form-group"><label class="col-sm-2 control-label">First Name</label>
-                                                            <div class="col-sm-8"><input type="text" disabled ng-model = "vendor.firstName" class="form-control"></div>
-                                                        </div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">Last Name</label>
-                                                            <div class="col-sm-8"><input type="text" disabled ng-model="vendor.lastName" class="form-control"></div>
-                                                        </div>
-                                                        <div class="hr-line-dashed"></div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">Address</label>
-                                                            <div class="col-sm-8"><input type="text" disabled ng-model="vendor.address" class="form-control"></div>
-                                                        </div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                            <div class="col-sm-8"><input type="text" disabled placeholder="0775856964" ng-model="vendor.tp" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">E-mail</label>
-                                                            <div class="col-sm-8"><input type="text" disabled ng-model="vendor.email" class="form-control"></div>
-                                                        </div>
-                                                        <div class="hr-line-dashed"></div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">Company</label>
-                                                            <div class="col-sm-8"><input type="text" disabled ng-model="vendor.company" class="form-control"></div>
-                                                        </div>
-                                                        <div class="hr-line-dashed"></div>
-
-
-                                                        <div class="hr-line-dashed"></div>
-                                                        <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
-                                                            <div class="col-sm-8">
-                                                                <p ng-repeat="drug in vendor.sellingDrugs">{{drug}}</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="hr-line-dashed"></div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
                         </div>
                     </div>
                 </div>
+
+
+
+
             </div>
         </div>
     </div>
@@ -401,10 +340,11 @@
 </div>
 
 <!-- Mainly scripts -->
+<script src="js/jquery-2.1.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
 <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
+<script src="js/inspinia.js"></script>
 <!-- Flot -->
 <script src="js/plugins/flot/jquery.flot.js"></script>
 <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
@@ -427,14 +367,15 @@
 <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Toastr -->
 <script src="js/plugins/toastr/toastr.min.js"></script>
-
-
-<!-- Chosen -->
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+</script>
 
 <!-- myFunctions -->
 <script>
-
-    //--clearFields--
     function clearFiels() {
         input1.value = "";
         input2.value = "";
@@ -442,25 +383,18 @@
         input4.value = "";
         input5.value = "";
         input6.value = "";
-        input7.value = "";
+        input7.value ="";
+        input8.value ="";
     }
     function hideAddBtn(){
         document.getElementById(addBtn).style.hide();
         document.getElementById(updateBtn).style.show();
     }
-    function successAlert(){
-        swal("Good job!", "You clicked the button!", "success");
-        clearFiels();
+    function hideUpdateBtn(){
+        document.getElementById(addBtn).style.show();
+        document.getElementById(updateBtn).style.hide();
     }
-    function addBtnFunc() {
-        document.getElementById('addBtn').style.display='inline';
-        document.getElementById('updateBtn').style.display='none';
-        clearFiels();
-    }
-    function editBtnFunc() {
-        document.getElementById('updateBtn').style.display='inline';
-        document.getElementById('addBtn').style.display='none';
-    }
+
 
 </script>
 

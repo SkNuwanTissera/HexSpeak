@@ -49,12 +49,12 @@ const DrugSchema = new Schema({
     batchNo :{
             type : String
 
-    }
+    },
 
-//     vendors: [{
-//     type: Schema.Types.ObjectId,
-//     ref: 'Vendor'
-// }]
+    vendors: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Vendor'
+}]
 
 
 });

@@ -18,6 +18,9 @@ const VendorSchema = new Schema({
         type: String,
         required: true
     },
+    sellingDrugs: [{
+        type: String
+    }],
     address: {
         type: String,
     },
