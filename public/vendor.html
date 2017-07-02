@@ -286,6 +286,14 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div id="previouslyAddedDrugs" class="form-group"><label class="col-sm-2 control-label"></label>
+                                                <div class="col-sm-10">
+                                                    <label class="col-sm-3 control-label">Previously Added Selling Drugs</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="text" disabled ng-repeat="drug in vendor.sellingDrugs" value={{drug}} class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="hr-line-dashed"></div>
 
                                             <div>
@@ -377,7 +385,7 @@
                                                         <div class="hr-line-dashed"></div>
                                                         <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
                                                             <div class="col-sm-8">
-                                                                <p ng-repeat="drug in vendor.sellingDrugs">{{drug}}</p>
+                                                                <input type="text" disabled ng-repeat="drug in vendor.sellingDrugs" value={{drug}} class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="hr-line-dashed"></div>
@@ -455,11 +463,13 @@
     function addBtnFunc() {
         document.getElementById('addBtn').style.display='inline';
         document.getElementById('updateBtn').style.display='none';
+        document.getElementById('previouslyAddedDrugs').style.display='none';
         clearFiels();
     }
     function editBtnFunc() {
         document.getElementById('updateBtn').style.display='inline';
         document.getElementById('addBtn').style.display='none';
+        document.getElementById('previouslyAddedDrugs').style.display='inline';
     }
 
 </script>
