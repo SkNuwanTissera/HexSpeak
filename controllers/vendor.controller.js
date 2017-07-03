@@ -73,7 +73,7 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
             });
         };
 
-        //Invoking Get All Vendors functin to load the table
+        //Invoking Get All Vendors function to load the table
         getVendors();
 
         //Get Drugs from DB

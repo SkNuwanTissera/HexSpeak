@@ -16,6 +16,7 @@ require('./models/item.model.js');
 require('./models/vendor.model.js');
 require('./models/drug.model.js');
 require('./models/prescription.model.js');
+require('./models/order.model.js');
 
 //load passportJS configuration
 require('./oauth/passport.js')(passport);
@@ -28,6 +29,7 @@ const VendorRouter = require('./routes/vendor.route.js');
 const DrugRouter = require('./routes/drug.route.js');
 const MainRouter = require('./routes/main.route.js');
 const OrderMailRouter = require('./routes/order.mail.route.js');
+const OrderRouter = require('./routes/order.route.js');
 
 // Init App
 const app = express();
@@ -83,6 +85,7 @@ app.use('/items', ItemRouter);
 app.use('/vendors',VendorRouter);
 app.use('/drugs',DrugRouter);
 app.use('/ordermails',OrderMailRouter);
+app.use('/orders',OrderRouter);
 app.use('/prescriptions',PrescriptionRouter);
 
 

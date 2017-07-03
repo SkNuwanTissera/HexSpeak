@@ -33,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="modules/sweetalert/dist/sweetalert.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="../modules/app.module.js"></script>
-    <script src="../controllers/vendor.controller.js"></script>
+    <script src="../controllers/order.controller.js"></script>
     <script src="../services/vendor.service.js"></script>
     <script src="../routes/main.route.js"></script>
 
@@ -154,51 +154,6 @@
                     </li>
 
 
-                    <!-- notification drop down -->
-                    <li class="dropdown">
-                        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                            <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-alerts">
-                            <li>
-                                <a href="mailbox.html">
-                                    <div>
-                                        <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="profile.html">
-                                    <div>
-                                        <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                        <span class="pull-right text-muted small">12 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="grid_options.html">
-                                    <div>
-                                        <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                        <span class="pull-right text-muted small">4 minutes ago</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="text-center link-block">
-                                    <a href="notifications.html">
-                                        <strong>See All Alerts</strong>
-                                        <i class="fa fa-angle-right"></i>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li><!-- /notification dropdown -->
-
-
                     <li>
                         <a href="#">
                             <i class="fa fa-sign-out"></i> Log out
@@ -213,139 +168,39 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <div  class="wrapper wrapper-content" ng-controller="VendorController">
+                <div  class="wrapper wrapper-content" ng-controller="OrderController">
 
 
                     <div  class="col-md-12">
-                        <h2 class="header">Vendor Management</h2>
-                        <div>
-                            <div class="row">
-                                <div class="col-md-1 col-md-offset-11">
-                                    <button class="btn btn-default pull-right" data-toggle="collapse" data-target="#vendorForm"
-                                            aria-controls="vendorForm"  ng-click="">Add Vendor
-                                    </button>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <div class="row collapse" id="vendorForm" aria-expanded="false" >
-                            <div class="col-lg-12">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Create a New Vendor<small> .  Fill The Form Below</small></h5>
-                                        <div class="ibox-tools">
-                                            <a class="collapse-link">
-                                                <i class="fa fa-chevron-up"></i>
-                                            </a>
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="fa fa-wrench"></i>
-                                            </a>
-                                            <ul class="dropdown-menu dropdown-vendor">
-                                                <li><a href="#">Config option 1</a>
-                                                </li>
-                                                <li><a href="#">Config option 2</a>
-                                                </li>
-                                            </ul>
-                                            <a class="close-link">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <form method="get" class="form-horizontal">
-                                            <div class="form-group"><label class="col-sm-2 control-label">First Name</label>
-                                                <div class="col-sm-10"><input id="input1" type="text" ng-model = "vendor.firstName" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Last Name</label>
-                                                <div class="col-sm-10"><input id="input2" type="text" ng-model="vendor.lastName" class="form-control"></div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Address</label>
-                                                <div class="col-sm-10"><input id="input4" type="text" ng-model="vendor.address" class="form-control"></div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                <div class="col-sm-3"><input id="input3" type="text" placeholder="0775856964" ng-model="vendor.tp" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number in the Given Format.</span>
-                                                </div>
-                                            </div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">E-mail</label>
-                                                <div class="col-sm-10"><input id="input5" type="text" ng-model="vendor.email" class="form-control"></div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Company</label>
-                                                <div class="col-sm-10"><input id="input6" type="text" ng-model="vendor.company" class="form-control"></div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-
-
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group"><label class="col-sm-2 control-label">Selling Drugs</label>
-                                                <div class="col-sm-10">
-                                                    <select id="drugChosen" chosen multiple data-placeholder="Choose Drugs"
-                                                            ng-model="selectedDrugs"
-                                                            ng-options="drug.drugName for drug in drugs">
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div id="previouslyAddedDrugs" class="form-group"><label class="col-sm-2 control-label"></label>
-                                                <div class="col-sm-10">
-                                                    <label class="col-sm-3 control-label">Previously Added Selling Drugs</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" disabled ng-repeat="drug in vendor.sellingDrugs" value={{drug}} class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-
-                                            <div>
-
-                                            </div>
-
-
-
-                                            <div class="form-group">
-                                                <div class="col-sm-4 col-sm-offset-2">
-                                                    <button class="btn btn-danger" data-toggle="collapse" onclick="clearFiels()" data-target="#vendorForm"
-                                                            aria-controls="vendorForm" ng-click="resetVendor()">Cancel</button>
-                                                    <button class="btn btn-success" id="addBtn" ng-click="addVendor(vendor)" type="submit">Add</button>
-                                                    <button class="btn btn-success" id="updateBtn" ng-click="editVendor(vendor,vendor._id)" type="submit">Update</button>
-                                                </div>
-                                            </div>
-                                            <br/><br/>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <h2 class="header">Order History</h2>
 
                         <div class="row" >
                             <table class="table">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Address</th>
-                                    <th>Telephone</th>
-                                    <th>Company</th>
-                                    <th>Email</th>
+                                    <th>Drug Name</th>
+                                    <th>Vendor Name</th>
+                                    <th>Vendor Email</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                    <th>Received Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="vendor in vendors">
-                                    <td>V 00{{vendor._id+1}}</td>
-                                    <td>{{vendor.firstName}}</td>
-                                    <td>{{vendor.lastName}}</td>
-                                    <td>{{vendor.address}}</td>
-                                    <td>{{vendor.tp}}</td>
-                                    <td>{{vendor.company}}</td>
-                                    <td>{{vendor.email}}</td>
-                                    <td><button data-toggle="modal" class="btn btn-primary" href="#modal-form" ng-click="getVendorByID(vendor._id)">View</button></td>
-                                    <td><button class="btn btn-warning" ng-click="getVendorByID(vendor._id)" data-toggle="collapse" data-target="#vendorForm"
-                                                aria-controls="vendorForm" onclick="editBtnFunc()">Edit</button></td>
-                                    <td><button class="btn btn-danger" ng-click="deleteVendor(vendor._id)">Delete</button></td>
+                                <tr ng-repeat="order in orders">
+                                    <td>V 00{{order._id+1}}</td>
+                                    <td>{{order.drug}}</td>
+                                    <td>{{order.vendor}}</td>
+                                    <td>{{order.vendorEmail}}</td>
+                                    <td>{{order.qty}}</td>
+                                    <td>{{order.note}}</td>
+                                    <td>{{order.orderDate}}</td>
+                                    <td>{{order.status}}</td>
+                                    <td>{{order.receivedDate}}</td>
+                                    <td><button data-toggle="modal" class="btn btn-primary" href="#modal-form" ng-click="">Confirm</button></td>
                                 </tr>
                                 </tbody>
                             </table>
