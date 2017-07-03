@@ -27,6 +27,7 @@ const ItemRouter = require('./routes/item.route.js');
 const VendorRouter = require('./routes/vendor.route.js');
 const DrugRouter = require('./routes/drug.route.js');
 const MainRouter = require('./routes/main.route.js');
+const OrderMailRouter = require('./routes/order.mail.route.js');
 
 // Init App
 const app = express();
@@ -81,6 +82,7 @@ app.use('/users', UserRouter);
 app.use('/items', ItemRouter);
 app.use('/vendors',VendorRouter);
 app.use('/drugs',DrugRouter);
+app.use('/ordermails',OrderMailRouter);
 app.use('/prescriptions',PrescriptionRouter);
 
 

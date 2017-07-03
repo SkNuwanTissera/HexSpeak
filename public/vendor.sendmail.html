@@ -195,10 +195,14 @@
                                     <div class="ibox-content">
                                         <form method="get" class="form-horizontal">
                                             <div class="form-group"><label class="col-sm-2 control-label">Drug</label>
-                                                <div class="col-sm-10"><select id="input1" type="text" ng-model = "selectedDrug" class="form-control" ng-change="getVendorsBySellingDrug()" ng-options="drug.drugName for drug in drugs"></select></div>
+                                                <div class="col-sm-10"><select id="input1" type="text" ng-model = "selectedDrug" class="form-control" ng-change="getVendorsBySellingDrug()" ng-options="drug.drugName for drug in drugs">
+                                                    <option value="" selected="selected" disabled>Choose a Drug</option>
+                                                </select></div>
                                             </div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Vendor</label>
-                                                <div class="col-sm-10"><select id="input2" type="text" ng-model = "selectedVendor" class="form-control" ng-change="getVendorEmail()" ng-options="vendor.firstName for vendor in vendorByDrug"></select></div>
+                                                <div class="col-sm-10"><select id="input2" type="text" ng-model = "selectedVendor" class="form-control" ng-change="getVendorEmail()" ng-options="vendor.firstName for vendor in vendorByDrug">
+                                                    <option value="" selected="selected" disabled>Choose a Vendor</option>
+                                                </select></div>
                                             </div>
                                             <div class="hr-line-dashed"></div>
                                             <div class="form-group"><label class="col-sm-2 control-label">Email</label>
@@ -222,7 +226,7 @@
                                                 <div class="col-sm-4 col-sm-offset-2">
                                                     <button class="btn btn-danger" data-toggle="collapse" onclick="window.location.href = './placeorder'" data-target="#vendorForm"
                                                             aria-controls="vendorForm">Clear</button>
-                                                    <button class="btn btn-success" id="addBtn" ng-click="addVendor(vendor)" type="submit">Send</button>
+                                                    <button class="btn btn-success" id="addBtn" ng-click="sendMail()" type="submit">Send</button>
                                                 </div>
                                             </div>
                                             <br/><br/>
