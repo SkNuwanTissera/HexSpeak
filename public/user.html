@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>HexSpeak | User</title>
+
     
     <!-- Angular js -->
     <!-- Angular js -->
@@ -22,7 +23,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-animate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js" integrity="sha256-lw0u1cTM3AYG0sY5cKefhETFxDjo/T5GTAppqOwgGPY=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/angular-chosen.js"></script>
     <script src="app.module.js"></script>
     <script src="controllers/prescription.controller.js"></script>
     <script src="controllers/user.controller.js"></script>
@@ -47,7 +52,7 @@
 
 </head>
 
-<body  ng-app="PharmacyApp" >
+<body  ng-app="PharmacyApp"  ng-controller="UserController">
     <div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
@@ -57,70 +62,36 @@
                     <!-- profile content list -->
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="img/a6.jpg" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
+                             </span> <span class="text-muted text-xs block">Cheif Pharmacist<b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.ejs">Logout</a></li>
+                                <li><a href="/app/login">Logout</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
                             IN+
                         </div>
                     </li>
-                    
-                    
-
                     <li class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="#">Cheif Pharmacist</a></li>
-                            <li class="active"><a href="#">Assistant Pharmacist</a></li>
+                            <li><a href="/app/dashboard">Main Dashboard</a></li>
+                            <li><a href="/app/users">User Management</a></li>
+                            <li class="active"><a href="/app/prescriptions">Prescription Management</a></li>
+                            <li><a href="dashboard_3.html">Vendor Management</a></li>
+                            <li><a href="dashboard_4_1.html">Stock Management</a></li>
+                            <li><a href="dashboard_5.html">Drug Dispense</a></li>
                         </ul>
                     </li>
-                    
-
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="#">Flot Charts</a></li>
-                            <li><a href="#">Morris.js Charts</a></li>
-                        </ul>
-                    </li>  
-                  
-                    
-                   
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a href="#">Third Level <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#">Second Level Item</a></li>
-                            <li>
-                                <a href="#">Second Level Item</a></li>
-                            <li>
-                                <a href="#">Second Level Item</a></li>
-                        </ul>
                     </li>
+
                 </ul>
             </div>
         </nav>
@@ -132,7 +103,7 @@
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="/app/users"><i class="fa fa-bars"></i> </a>
             <form role="search" class="navbar-form-custom" action="search_results.html">
                 <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                    <input type="text" placeholder="Search for something..." ng-model="query[queryBy]" class="form-control" />
                 </div>
             </form>
         </div>
@@ -200,7 +171,7 @@
         </div>
             
             
-            <div class="row"  ng-controller="UserController">
+            <div class="row">
                 <div class="col-lg-12">
                     <div  class="wrapper wrapper-content">
 
@@ -216,17 +187,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <tr>
-                                            <td align="right">Search :</td>
-                                            <td><input  ng-model="query[queryBy]" /></td>
+                                            <td  class="form-control" align="right">Search :</td>
+                                            <td><input   class="form-control" ng-model="query[queryBy]" /></td>
                                         </tr>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <tr>
                                             <td align="right">Search By :</td>
                                             <td>
-                                                <select ng-model="queryBy">
+                                                <select  class="form-control" ng-model="queryBy">
                                                     <option value="$"></option>
                                                     <option value="firstName">FIRST NAME</option>
                                                     <option value="lastName">LAST NAME</option>
@@ -238,15 +209,28 @@
                                         <br/>
                                         <br/>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <tr>
                                             <td align="right">Sort By :</td>
                                             <td>
-                                                <select ng-model="sort">
+                                                <select  class="form-control" ng-model="sort">
                                                     <option value="$"></option>
                                                     <option value="firstName">FIRST NAME</option>
                                                     <option value="lastName">LAST NAME</option>
                                                     <option value="mobile">MOBILE</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <tr>
+                                            <td align="right" >Show Only:</td>
+                                            <td>
+                                                <select ng-model="utype"  class="form-control">
+                                                    <option value="$"></option>
+                                                    <option value="userType=='Patient'">Patients</option>
+                                                    <option value="userType=='Doctors'">Doctors</option>
+                                                    <option value="userType=='Pharmacist'">Pharmacists</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -284,12 +268,12 @@
                                                    <div class="row">
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">First Name</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "user.firstName" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" id="fname" ng-model = "user.firstName" class="form-control"><span class="help-block m-b-none">This is Used In the System To Identify You</span></div>
                                                            </div>
                                                        </div>
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Last Name</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model="user.lastName" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text"id="lname" ng-model="user.lastName" class="form-control"></div>
                                                            </div>
                                                        </div>
 
@@ -297,12 +281,12 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="col-sm-4 control-label">Username</label>
-                                                            <div class="col-sm-6"><input type="text" ng-model = "user.userName" class="form-control" name="username"></div>
+                                                            <div class="col-sm-6"><input type="text" id="username" ng-model = "user.userName" class="form-control" name="username"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="col-sm-4 control-label">Email</label>
-                                                            <div class="col-sm-6"><input type="text" ng-model = "user.email" class="form-control" name="email"></div>
+                                                            <div class="col-sm-6"><input type="text" id="email" ng-model = "user.email" class="form-control" name="email"></div>
                                                         </div></div>
 
 
@@ -310,30 +294,36 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="col-sm-4 control-label">Password</label>
-                                                                <div class="col-sm-6"><input type="password" ng-model = "user.password" class="form-control" name="password"></div>
+                                                                <div class="col-sm-6"><input type="password" id="password" ng-model = "user.password" class="form-control" name="password"></div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <div class="form-group"><label class="col-sm-4 control-label">Confirm Password</label>
-                                                                <div class="col-sm-6"><input type="password" class="form-control" name="password"></div>
+                                                                <div class="col-sm-6"><input type="password" id="cpassword" class="form-control" name="password"></div>
                                                             </div>
                                                         </div>
                                                     </div>
 
 
                                                     <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                        <div class="col-sm-3"><input type="text" ng-model="user.mobile" placeholder="+94-775856964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number with Country Code.</span>
+                                                        <div class="col-sm-3"><input type="text" id="mobile" ng-model="user.mobile" placeholder="077 585 6964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number Without Country Code.</span>
                                                         </div>
                                                     </div>
                                                     <div class="hr-line-dashed"></div>
                                                     <div class="form-group"><label class="col-sm-2 control-label">User Type <br/>
                                                         <small class="text-navy">Pharmacist | Doctor | Patient</small></label>
 
-                                                        <div class="col-sm-10">
-                                                            <div><label style="color: #500a6f"> <input type="radio" checked="" ng-model = "user.userType" value="CPharmacist" id="CPharmacist" name="optionsRadios">  Chief Pharmacist </label></div>
-                                                            <div><label style="color: #8a1f11"> <input type="radio" ng-model = "user.userType" value="APharmacist" id="APharmacist" name="optionsRadios">  Assistant Pharmacist</label></div>
+                                                        <div class="col-sm-5">
+                                                            <div><label style="color: #500a6f"> <input type="radio" checked="" ng-model = "user.userType" value="CPharmacist" id="CPharmacist" name="optionsRadios" onclick="window.invalidate_inputCP()">  Chief Pharmacist </label></div>
+                                                            <div><label style="color: #8a1f11"> <input type="radio" ng-model = "user.userType" value="APharmacist" id="APharmacist" name="optionsRadios" onclick="window.invalidate_inputAP()">  Assistant Pharmacist</label></div>
                                                             <div><label style="color: #1AB394"> <input type="radio" ng-model = "user.userType" value="Doctor" id="Doctor" name="optionsRadios" onclick="window.invalidate_input()"> Doctor</label></div>
-                                                            <div><label style="color: #0d8ddb" > <input type="radio" ng-model = "user.userType" value="Patient" id="Patient" name="optionsRadios">  Patient</label></div>
+                                                            <div><label style="color: #0d8ddb" > <input type="radio" ng-model = "user.userType" value="Patient" id="Patient" name="optionsRadios" onclick="window.invalidate_inputP()">  Patient</label></div>
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <div id="IdBox" class="alert alert-success" hidden>
+                                                                Please Enter Medical Council Pharmacist Registration ID<br/><br/>
+                                                                <input type="text" class="form-control" placeholder="MC-1233231"/>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -405,15 +395,35 @@
 
 
                                                     <div class="hr-line-dashed"></div>
+                                                    <div class="row">
+                                                        <div class="col-md-2"></div>
+                                                        <div class="col-md-6">
+                                                            <h3 style="align-self: center; opacity: 1; color: #0d8ddb">Doctor Information</h3><br/>
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group"><label class="col-sm-2 control-label">Hospital</label>
                                                         <div class="col-sm-5"><input id="txtBoxHospital" type="text" ng-model="user.hospital" placeholder=" E.g : National Hospital" class="form-control" disabled></div>
                                                     </div>
+
+                                                    <div class="form-group"><label class="col-sm-2 control-label">Medical Counsil Registration ID</label>
+                                                        <div class="col-sm-5"><input id="txtBoxDoctorId" type="text" ng-model="user.doctorId" placeholder=" E.g : MCC1223213 " class="form-control" disabled></div>
+                                                        <div class="col-sm-5">
+                                                            <div class="alert alert-info">
+                                                                <input type="radio" name="hospitalType"/> Private
+                                                                <input type="radio" name="hospitalType"/> Goverment
+                                                                <input type="radio" name="hospitalType"/> Semi-Goverment
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
                                                     <div class="hr-line-dashed"></div>
-                                                    <div class="form-group" ng-controller="MailController">
+                                                    <div class="form-group">
                                                         <div class="col-sm-4 col-sm-offset-2">
-                                                            <button class="btn btn-danger" type="submit">Cancel</button>
-                                                            <button class="btn btn-success"  ng-click="addUser(user);sendMail(user)">Save changes</button>
+                                                            <button class="btn btn-danger" data-toggle="collapse" data-target="#userForm"
+                                                                    aria-controls="userForm" type="submit">Cancel</button>
+                                                            <button class="btn btn-success"  ng-click="addUser(user);">Save changes</button>
                                                         </div>
                                                     </div>
                                                 <br/><br/>
@@ -435,7 +445,7 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group"><label class="col-sm-4 control-label">First Name</label>
-                                                            <div class="col-sm-6"><input type="text" ng-model = "user.firstName" class="form-control"></div>
+                                                            <div class="col-sm-6"><input  type="text" ng-model = "user.firstName" class="form-control"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
@@ -455,8 +465,6 @@
                                                         <div class="form-group"><label class="col-sm-4 control-label">Email</label>
                                                             <div class="col-sm-6"><input type="text" ng-model = "user.email" class="form-control" name="email"></div>
                                                         </div></div>
-
-
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -473,7 +481,7 @@
 
 
                                                 <div class="form-group"><label class="col-sm-2 control-label">Mobile</label>
-                                                    <div class="col-sm-3"><input type="text" ng-model="user.mobile" placeholder="+94-775856964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number with Country Code.</span>
+                                                    <div class="col-sm-3"><input type="text" ng-model="user.mobile" placeholder="077 585 6964" class="form-control"> <span class="help-block m-b-none">Enter Mobile Number Without Country Code.</span>
                                                     </div>
                                                 </div>
 
@@ -588,43 +596,111 @@
     <script src="js/plugins/toastr/toastr.min.js"></script>
 
     <script type="text/javascript">
-        $(function() {
+        window.invalidate_inputAP= function () {
+            if ($('input[name=optionsRadios]:checked').val() == "APharmacist")
+                $('#IdBox').removeAttr('hidden');
+            else
+                $('#IdBox').attr('hidden', 'hidden');
+        };
 
-            window.invalidate_input = function() {
+        $("input[name=optionsRadios]").change(invalidate_inputAP);
+
+        invalidate_inputAP();
+    </script>
+    <script type="text/javascript">
+         window.invalidate_inputCP = function () {
+            if ($('input[name=optionsRadios]:checked').val() == "CPharmacist")
+                $('#IdBox').removeAttr('hidden');
+            else
+                $('#IdBox').attr('hidden', 'hidden');
+        };
+
+        $("input[name=optionsRadios]").change(invalidate_inputCP);
+
+        invalidate_inputCP();
+
+
+            window.invalidate_input = function () {
                 if ($('input[name=optionsRadios]:checked').val() == "Doctor")
-                    $('#txtBoxHospital').removeAttr('disabled');
+                    $('#txtBoxHospital').removeAttr('disabled'),
+                    $('#txtBoxDoctorId').removeAttr('disabled');
                 else
-                    $('#txtBoxHospital').attr('disabled', 'disabled');
+                    $('#txtBoxHospital').attr('disabled', 'disabled'),
+                    $('#txtBoxDoctorId').attr('disabled', 'disabled');
             };
 
             $("input[name=optionsRadios]").change(invalidate_input);
 
             invalidate_input();
-        });
 
-        $(function() {
 
-            window.invalidate_input = function() {
-                if ($('input[name=optionsRadios]:checked').val() == "Patient")
-                    $('#Patient_BG').removeAttr('disabled'),
+        window.invalidate_inputP = function() {
+            if ($('input[name=optionsRadios]:checked').val() == "Patient")
+
+                $('#Patient_BG').removeAttr('disabled'),
                     $('#age').removeAttr('disabled'),
                     $('#male').removeAttr('disabled'),
                     $('#female').removeAttr('disabled'),
                     $('#height').removeAttr('disabled'),
                     $('#weight').removeAttr('disabled');
-                else
-                    $('#Patient_BG').attr('disabled', 'disabled'),
+            else
+                $('#Patient_BG').attr('disabled', 'disabled'),
                     $('#age').attr('disabled', 'disabled'),
                     $('#male').attr('disabled', 'disabled'),
                     $('#female').attr('disabled', 'disabled'),
                     $('#height').attr('disabled', 'disabled'),
                     $('#weight').attr('disabled', 'disabled');
-            };
+        };
 
-            $("input[name=optionsRadios]").change(invalidate_input);
+        $("input[name=optionsRadios]").change(invalidate_inputP);
 
-            invalidate_input();
-        });
+        invalidate_inputP();
+
+
+
+
+
+
     </script>
+    <script>
+
+        //--clearFields--
+        function clearFiels() {
+            input1.value = "";
+            input2.value = "";
+            input3.value = "";
+            input4.value = "";
+            input5.value = "";
+            input6.value = "";
+            input7.value = "";
+        }
+        function hideAddBtn(){
+            document.getElementById(addBtn).style.hide();
+            document.getElementById(updateBtn).style.show();
+        }
+        function successAlert(){
+            swal("Good job!", "You clicked the button!", "success");
+            clearFiels();
+        }
+        function addBtnFunc() {
+            document.getElementById('addBtn').style.display='inline';
+            document.getElementById('updateBtn').style.display='none';
+            document.getElementById('previouslyAddedDrugs').style.display='none';
+            clearFiels();
+        }
+        function editBtnFunc() {
+            document.getElementById('updateBtn').style.display='inline';
+            document.getElementById('addBtn').style.display='none';
+            document.getElementById('previouslyAddedDrugs').style.display='inline';
+        }
+    </script>
+    <!-- Mainly scripts -->
+
+
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
 </body>
 </html>

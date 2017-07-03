@@ -19,6 +19,15 @@ Router.get('/', (req, res) => {
     });
 });
 
+Router.get('/drugs/:id', (req, res) => {
+    VendorModel.find({ sellingDrugs: { "$in" : [req.params.id]} }).then(vendors => {
+        res.json(vendors);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+});
+
 Router.get('/:id', (req, res) => {
     VendorModel.findById(req.params.id).then(vendor => {
         res.json(vendor || {});

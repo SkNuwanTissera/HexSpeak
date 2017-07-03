@@ -7,7 +7,11 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 var dotenv = require('dotenv');
+const node_acl = require( 'acl' );
 const expressValidator = require('express-validator');
+
+
+mongoose.Promise = global.Promise;
 
 //using the dotenv library to load our environmental variables from the .env
 dotenv.load();
@@ -24,6 +28,7 @@ require('./models/item.model.js');
 require('./models/vendor.model.js');
 require('./models/drug.model.js');
 require('./models/prescription.model.js');
+require('./models/order.model.js');
 
 //load passportJS configuration
 require('./oauth/passport.js')(passport);
@@ -36,6 +41,9 @@ const VendorRouter = require('./routes/vendor.route.js');
 const DrugRouter = require('./routes/drug.route.js');
 const MainRouter = require('./routes/main.route.js');
 const MailRouter = require('./routes/mail.route.js');
+const SMSRouter = require('./routes/sms.route.js');
+const OrderMailRouter = require('./routes/order.mail.route.js');
+const OrderRouter = require('./routes/order.route.js');
 
 // Init App
 const app = express();
@@ -73,6 +81,11 @@ app.use(expressValidator({
 app.use(passport.initialize());
 app.use(passport.session());
 
+//global vars
+// app.use(req,res,next=>{
+//    res.locals.user=req.user ||null;
+// });
+
 // Express Messages Middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
@@ -106,17 +119,32 @@ app.use('/app', MainRouter);
 app.use('/users', UserRouter);
 app.use('/items', ItemRouter);
 app.use('/vendors',VendorRouter);
-app.use('/drugs',DrugRouter);
 app.use('/prescriptions',PrescriptionRouter);
 app.use('/email',MailRouter);
+app.use('/sms',SMSRouter);
+app.use('/drugs',DrugRouter);
+app.use('/ordermails',OrderMailRouter);
+app.use('/orders',OrderRouter);
 
+
+
+app.get('/app/placeorder', (req, res, next) => {
+    res.sendFile(__dirname + '/public/vendor.sendmail.html');
+});
+
+app.get('/app/orders', (req, res, next) => {
+    res.sendFile(__dirname + '/public/vendor.order.html');
+});
 
 app.get('/app/vendors', (req, res, next) => {
     res.sendFile(__dirname + '/public/vendor.html');
 });
+app.get('/app/dashboard', (req, res, next) => {
+    res.sendFile(__dirname + '/public/dashboard.html');
+});
 
-app.get('/', (req, res, next) => {
-    res.sendFile(__dirname + '/public/index.html');
+app.get('/app/mailbox', (req, res, next) => {
+    res.sendFile(__dirname + '/public/mailbox.html');
 });
 
 app.get('/app/users', (req, res, next) => {

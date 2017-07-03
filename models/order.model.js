@@ -9,38 +9,37 @@ autoIncrement.initialize(connection);
 
 const Schema = mongoose.Schema;
 
-const VendorSchema = new Schema({
-    firstName: {
+const OrderSchema = new Schema({
+    drug: {
         type: String,
         required: true
     },
-    lastName: {
+    vendor: {
         type: String,
         required: true
     },
-    sellingDrugs: [{
-        type: String
-    }],
-    address: {
+    vendorEmail: {
         type: String,
     },
-    tp: {
+    qty: {
         type: String
     },
-    email: {
+    note: {
         type: String
     },
-    company: {
+    orderDate: {
         type: String
     },
-    drugs: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Drug'
-    }]
+    status: {
+        type: String
+    },
+    receivedDate: {
+        type: String
+    }
 });
 
-VendorSchema.plugin(autoIncrement.plugin, 'Vendor');
-var Vendor = connection.model('Vendor', VendorSchema);
-//const Vendor = mongoose.model('Vendor', VendorSchema);
+OrderSchema.plugin(autoIncrement.plugin, 'Order');
+var Order = connection.model('Order', OrderSchema);
+//const Order = mongoose.model('Order', OrderSchema);
 
-module.exports = Vendor;
+module.exports = Order;

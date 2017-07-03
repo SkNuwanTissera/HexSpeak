@@ -26,8 +26,7 @@ Router.post('/', (req, res) => {
         "<body> " +
         "<h1>Thank You "+req.body.firstName+" For Registering With Us!!</h1>" +
         "<h2>Your have been registerd as a "+req.body.userType+" :-)" +
-        "<h3>Username : req.body.userName</h3>" +
-        "<h3>Password : req.body.password</h3>" +
+        "<h3>Username : "+req.body.userName+"</h3>" +
         "<h5>HexSpeak Pharmacy Systems </h5> " +
         "<h5>Sri Lanka</h5>" +
         "</body> " +

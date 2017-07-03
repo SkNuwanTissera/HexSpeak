@@ -1,0 +1,316 @@
+<!--
+*
+*  INSPINIA - Responsive Admin Theme
+*  version 2.6.2
+*
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Vendors</title>
+
+    <!-- include the jQuery n Chosen js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.jquery.min.js"></script>
+
+    <!-- include the css and sprite for Chosen-->
+    <link href="css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
+    <link rel="image_src" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen-sprite.png">
+
+
+    <!-- Angular js -->
+    <script src="modules/angular/angular.js"></script>
+    <script src="modules/angular-route/angular-route.js"></script>
+    <script src="js/angular-chosen.js"></script>
+    <script src="modules/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="modules/sweetalert/dist/sweetalert.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="./app.module.js"></script>
+    <script src="./controllers/order.controller.js"></script>
+    <script src="./services/vendor.service.js"></script>
+    <script src="../routes/main.route.js"></script>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <!-- Chosen -->
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body  ng-app="PharmacyApp" >
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+
+            <ul class="nav metismenu" id="side-menu">
+
+                <!-- profile content list -->
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Tharindu Perera</strong>
+                             </span> <span class="text-muted text-xs block">Pharmacist <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="mailbox.html">Mailbox</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.ejs">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
+                </li>
+
+
+
+                <li class="active">
+                    <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Vendor</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li class="active"><a href="#" onclick="window.location.href = './vendors'">Manage Vendors</a></li>
+                        <li class="active"><a href="#" onclick="window.location.href = './placeorder'">Place Orders</a></li>
+                        <li class="active"><a href="#" onclick="window.location.href = './orders'">Order History</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="#">Flot Charts</a></li>
+                        <li><a href="#">Morris.js Charts</a></li>
+                    </ul>
+                </li>
+
+
+
+                <li>
+                    <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="#">Third Level <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="#">Third Level Item</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="#">Second Level Item</a></li>
+                        <li>
+                            <a href="#">Second Level Item</a></li>
+                        <li>
+                            <a href="#">Second Level Item</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <form role="search" class="navbar-form-custom" action="search_results.html">
+                        <div class="form-group">
+                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                        </div>
+                    </form>
+                </div>
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <li>
+                        <span class="m-r-sm text-muted welcome-message">Welcome to HexSpeak.</span>
+                    </li>
+
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sign-out"></i> Log out
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div  class="wrapper wrapper-content" ng-controller="OrderController">
+
+
+                    <div  class="col-md-12">
+                        <h2 class="header">Order History</h2>
+
+                        <div class="row" >
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Drug Name</th>
+                                    <th>Vendor Name</th>
+                                    <th>Vendor Email</th>
+                                    <th>Quantity</th>
+                                    <th>Description</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                    <th>Received Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="order in orders">
+                                    <td>V 00{{order._id+1}}</td>
+                                    <td>{{order.drug}}</td>
+                                    <td>{{order.vendor}}</td>
+                                    <td>{{order.vendorEmail}}</td>
+                                    <td>{{order.qty}}</td>
+                                    <td>{{order.note}}</td>
+                                    <td>{{order.orderDate}}</td>
+                                    <td>{{order.status}}</td>
+                                    <td>{{order.receivedDate}}</td>
+                                    <td><button data-toggle="modal" class="btn btn-primary" href="#modal-form" ng-click="getOrderByID(order._id)">Confirm</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+
+
+                            <!--View Window-->
+                            <div id="modal-form" class="modal fade" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="ibox-content">
+                                                    <form method="get" class="form-horizontal">
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Status</label>
+                                                            <div class="col-sm-5"><input type="text" ng-model = "order.status" class="form-control"></div>
+                                                        </div>
+                                                        <div class="form-group"><label class="col-sm-4 control-label">Received Date</label>
+                                                            <div class="col-sm-5"><input type="date" ng-model="order.receivedDate" class="form-control"></div>
+                                                        </div>
+                                                        <div class="hr-line-dashed"></div>
+                                                        <div class="form-group"><label class="col-sm-9 control-label"><button class="btn btn-warning" ng-click="">Confirm</button></label>
+                                                            <div class="col-sm-4"></div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+<!-- Flot -->
+<script src="js/plugins/flot/jquery.flot.js"></script>
+<script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+<script src="js/plugins/flot/jquery.flot.spline.js"></script>
+<script src="js/plugins/flot/jquery.flot.resize.js"></script>
+<script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+<!-- Peity -->
+<script src="js/plugins/peity/jquery.peity.min.js"></script>
+<script src="js/demo/peity-demo.js"></script>
+
+
+
+<!-- Custom and plugin javascript -->
+
+<script src="js/plugins/pace/pace.min.js"></script>
+
+
+<!-- jQuery UI -->
+<script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Toastr -->
+<script src="js/plugins/toastr/toastr.min.js"></script>
+
+
+<!-- Chosen -->
+
+<!-- myFunctions -->
+<script>
+
+    //--clearFields--
+    function clearFiels() {
+        input1.value = "";
+        input2.value = "";
+        input3.value = "";
+        input4.value = "";
+        input5.value = "";
+        input6.value = "";
+        input7.value = "";
+    }
+    function hideAddBtn(){
+        document.getElementById(addBtn).style.hide();
+        document.getElementById(updateBtn).style.show();
+    }
+    function successAlert(){
+        swal("Good job!", "You clicked the button!", "success");
+        clearFiels();
+    }
+    function addBtnFunc() {
+        document.getElementById('addBtn').style.display='inline';
+        document.getElementById('updateBtn').style.display='none';
+        document.getElementById('previouslyAddedDrugs').style.display='none';
+        clearFiels();
+    }
+    function editBtnFunc() {
+        document.getElementById('updateBtn').style.display='inline';
+        document.getElementById('addBtn').style.display='none';
+        document.getElementById('previouslyAddedDrugs').style.display='inline';
+    }
+
+</script>
+
+
+</body>
+</html>

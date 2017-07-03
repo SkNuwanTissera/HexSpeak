@@ -2,6 +2,10 @@
 
 angular.module('PharmacyApp').controller('PrescriptionController',['$scope','PrescriptionService',
     function ($scope,PrescriptionService) {
+
+    $scope.Pquery={}
+    $scope.PqueryBy='$'
+    $scope.orderProp="name"
     /*
      * GETTERS
      * */
@@ -12,6 +16,7 @@ angular.module('PharmacyApp').controller('PrescriptionController',['$scope','Pre
 
         PrescriptionService.get().then(prescriptions => {
             $scope.prescriptions = prescriptions;
+            $scope.prescriptionCount = prescriptions.length;
         });
 
     }

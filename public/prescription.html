@@ -15,6 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js" integrity="sha256-lw0u1cTM3AYG0sY5cKefhETFxDjo/T5GTAppqOwgGPY=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
@@ -31,6 +33,7 @@
     <script src="services/prescription.service.js"></script>
     <script src="services/drug.service.js"></script>
     <script src="services/user.service.js"></script>
+    <script src="services/mail.service.js"></script>
 
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -48,80 +51,46 @@
 
 </head>
 
-<body  ng-app="PharmacyApp" ng-controller="UserController">
-    <div id="wrapper">
+<body  ng-app="PharmacyApp"  ng-controller="PrescriptionController">
+    <div id="wrapper"  ng-controller="UserController">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
-                
+
                 <ul class="nav metismenu" id="side-menu">
                     
                     <!-- profile content list -->
                     <li class="nav-header">
                         <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                            <img alt="image" class="img-circle" src="img/a6.jpg" />
                              </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Admin</strong>
+                             </span> <span class="text-muted text-xs block">Cheif Pharmacist<b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a href="profile.html">Profile</a></li>
                                 <li><a href="contacts.html">Contacts</a></li>
                                 <li><a href="mailbox.html">Mailbox</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.ejs">Logout</a></li>
+                                <li><a href="/app/login">Logout</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
-                            HEX+
+                            IN+
                         </div>
                     </li>
-
                     <li class="active">
                         <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
-
                         <ul class="nav nav-second-level">
-                            <li class="active"><a href="#">Cheif Pharmacist</a></li>
-                            <li class="active"><a href="#">Assistant Pharmacist</a></li>
-                        </ul>
-
-                    </li>
-
-                    <li>
-                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li><a href="#">Flot Charts</a></li>
-                            <li><a href="#">Morris.js Charts</a></li>
-                        </ul>
-                    </li>  
-                  
-                    
-                   
-                    <li>
-                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level collapse">
-                            <li>
-                                <a href="#">Third Level <span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level Item</a>
-
-                                    </li>
-
-                                </ul>
-                            </li>
-                            <li><a href="#">Second Level Item</a></li>
-                            <li>
-                                <a href="#">Second Level Item</a></li>
-                            <li>
-                                <a href="#">Second Level Item</a></li>
+                            <li><a href="/app/dashboard">Main Dashboard</a></li>
+                            <li><a href="/app/users">User Management</a></li>
+                            <li class="active"><a href="/app/prescriptions">Prescription Management</a></li>
+                            <li><a href="dashboard_3.html">Vendor Management</a></li>
+                            <li><a href="dashboard_4_1.html">Stock Management</a></li>
+                            <li><a href="dashboard_5.html">Drug Dispense</a></li>
                         </ul>
                     </li>
+
+
                 </ul>
             </div>
         </nav>
@@ -207,12 +176,12 @@
                     <div  class="wrapper wrapper-content">
 
 
-                        <div  class="col-md-12" ng-controller="PrescriptionController">
+                        <div  class="col-md-12">
                             <h2 class="header">Prescription Management</h2>
                             <div>
                                 <div class="row">
                                     <div class="col-md-1 col-md-offset-11">
-                                        <button ng-controller="UserController" ng-click="getCurrentUser()" class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
+                                        <button  ng-click="getCurrentUser()" class="btn btn-default pull-right" data-toggle="collapse" data-target="#userForm"
                                                 aria-controls="prescriptionForm">Add Prescription
                                         </button>
                                     </div>
@@ -250,31 +219,31 @@
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">First Name</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.firstName" placeholder="{{cuser.firstName}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.firstName" placeholder="{{x.firstName}}" class="form-control"></div>
                                                            </div>
                                                        </div>
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Last Name</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model="prescription.lastName" placeholder="{{cuser.lastName}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model="prescription.lastName" placeholder="{{x.lastName}}" class="form-control"></div>
                                                            </div>
                                                        </div>
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Age</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.age" placeholder="{{cuser.age}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.age" placeholder="{{x.age}}" class="form-control"></div>
                                                            </div>
                                                        </div>
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Height</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.height" placeholder="{{cuser.height}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.height" placeholder="{{x.height}}" class="form-control"></div>
                                                            </div>
                                                        </div>
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Weight</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.weight" placeholder="{{cuser.weight}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.weight" placeholder="{{x.weight}}" class="form-control"></div>
                                                            </div>
 
                                                        </div>
@@ -289,7 +258,7 @@
 
                                                        <div class="col-md-6">
                                                            <div class="form-group"><label class="col-sm-4 control-label">Email</label>
-                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.email" placeholder="{{cuser.email}}" class="form-control"></div>
+                                                               <div class="col-sm-6"><input type="text" ng-model = "prescription.email" placeholder="{{x.email}}" class="form-control"></div>
                                                            </div>
                                                        </div>
 
@@ -449,13 +418,16 @@
                                                                <div class="form-group"><label class="col-sm-2 control-label"></label>
                                                                    <div class="row">
                                                                        <!--drug-->
-                                                                       <div class="col-sm-3"><select name="drugName" ng-model="prescription.medicine9.name">
-                                                                           <option ng-selected="prescription.medicine9.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+                                                                       <div class="col-sm-3">
+                                                                           <select name="drugName" ng-model="prescription.medicine9.name">
+                                                                           <option  ng-selected="prescription.medicine9.name=='{{drug.drugName}}'" ng-repeat="drug in drugs" value="{{drug.drugName}}">{{drug.drugName}}</option>
+
                                                                        </select>
 
                                                                            <span class="help-block m-b-none"></span></div>
-                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.cards" placeholder="No. Of Cards" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
-                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.instructions" placeholder="Instructions" placeholder="{{prescription.allergies}}" class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.cards" placeholder="No. Of Cards"  class="form-control"> <span class="help-block m-b-none"></span></div>
+                                                                       <div class="col-sm-3"><input type="text" ng-model="prescription.medicine9.instructions" placeholder="Instructions"  class="form-control"> <span class="help-block m-b-none"></span></div>
+
 
                                                                    </div>
                                                                </div>
@@ -468,8 +440,9 @@
 
                                                     <div class="form-group">
                                                         <div class="col-sm-4 col-sm-offset-2">
-                                                            <button class="btn btn-danger" type="submit">Cancel</button>
-                                                            <button class="btn btn-success"  ng-click="addPrescription(prescription)">Save changes</button>
+                                                            <button class="btn btn-danger" data-toggle="collapse" data-target="#userForm"
+                                                                    aria-controls="prescriptionForm" type="submit">Cancel</button>
+                                                            <button class="btn btn-success" onclick="alertOnSave();" ng-click="addPrescription(prescription)">Save changes</button>
                                                         </div>
                                                     </div>
                                                 <br/><br/>
@@ -483,116 +456,157 @@
                             <!--TABLE STARTS-->
 
                             <!---->
-
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <tr>
+                                            <td align="right">Search :</td>
+                                            <td><input  ng-model="Pquery[PqueryBy]" /></td>
+                                        </tr>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <tr>
+                                            <td align="right">Search By :</td>
+                                            <td>
+                                                <select ng-model="PqueryBy">
+                                                    <option value="firstName">FIRST NAME</option>
+                                                    <option value="lastName">LAST NAME</option>
+                                                    <option value="mobile">MOBILE</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <br/>
+                                        <br/>
+                                        <br/>
+                                    </div>
+                                </div>
 
 
                                 <div class="row" >
-                                <table class="table">
-                                    <thead>
-                                    <tr>
-                                        <th>First name</th>
-                                        <th>Last name</th>
-                                        <th>Age</th>
-                                        <th>Gender</th>
-                                        <th>Height</th>
-                                        <th>Weight</th>
-                                        <th>address</th>
-                                        <th>email</th>
-                                        <th>doctor</th>
-                                        <th>bloodGroup</th>
-                                        <th>contactNo</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="prescription in prescriptions">
-                                        <td>{{prescription.firstName}}</td>
-                                        <td>{{prescription.lastName}} </td>
-                                        <td>{{prescription.age}} </td>
-                                        <td>{{prescription.gender}} </td>
-                                        <td>{{prescription.height}} </td>
-                                        <td>{{prescription.weight}} </td>
-                                        <td>{{prescription.address}} </td>
-                                        <td>{{prescription.email}} </td>
-                                        <td>{{prescription.doctor}} </td>
-                                        <td>{{prescription.bloodGroup}} </td>
-                                        <td>{{prescription.contactNo}} </td>
-                                        <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
-                                        <!--<td><button class="btn btn-danger" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>-->
-                                        <td><button class="btn btn-primary" ng-click="viewPrescription(prescription)" data-toggle="collapse" data-target="#displayPrescription"
-                                                    aria-controls="displayPrescription">View</button></td>
-                                        <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
-                                        <div class="jumbotron row collapse" id="displayPrescription" aria-expanded="false">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>First name</th>
+                                            <th>Last name</th>
+                                            <th>Age</th>
+                                            <th>Gender</th>
+                                            <th>Height</th>
+                                            <th>Weight</th>
+                                            <th>email</th>
+                                            <th>doctor</th>
+                                            <th>BG</th>
+                                            <th>contactNo</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
 
-                                            <h5>Prescription Details</h5>
-                                            <button class="btn btn-sm btn-default btn-danger pull-right glyphicon glyphicon-remove " data-toggle="collapse" data-target="#displayPrescription"
-                                                    aria-controls="displayPrescription">Close</button>
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine1.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine1.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine1.instructions}}</h4>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="prescription in prescriptions|filter:Pquery">
+                                            <td>{{prescription.firstName}}</td>
+                                            <td>{{prescription.lastName}} </td>
+                                            <td>{{prescription.age}} </td>
+                                            <td>{{prescription.gender}} </td>
+                                            <td>{{prescription.height}} </td>
+                                            <td>{{prescription.weight}} </td>
+                                            <td>{{prescription.email}} </td>
+                                            <td>{{prescription.doctor}} </td>
+                                            <td>{{prescription.bloodGroup}} </td>
+                                            <td>{{prescription.contactNo}} </td>
+                                            <!--<td><input ng-model="user.lastNames" placeholder="lastname"/></td>-->
+                                            <td><button class="btn btn-success" data-toggle="collapse" data-target="#dispense"
+                                                        aria-controls="dispense">Dispense</button></td>
+                                            <td><button class="btn btn-success" ng-click="editPrescription(prescription,prescription._id)">Edit</button></td>
+                                            <td><button class="btn btn-primary" ng-click="viewPrescription(prescription)" data-toggle="collapse" data-target="#displayPrescription"
+                                                        aria-controls="displayPrescription">View</button></td>
+                                            <td><button class="btn btn-danger" ng-click="deletePrescription(prescription._id)">Delete</button></td>
+                                            <div class="alert jumbotron row collapse" id="displayPrescription" aria-expanded="false">
+
+                                                <h5>Prescription Details</h5>
+                                                <button class="btn btn-sm btn-default btn-danger pull-right glyphicon glyphicon-remove " data-toggle="collapse" data-target="#displayPrescription"
+                                                        aria-controls="displayPrescription">Close</button>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine1.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine1.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine1.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine2.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine2.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine2.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine3.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine3.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine3.instructions}}</h4>
+                                                        <strong><h5><button data-toggle="collapse" data-target="#box2"
+                                                                            aria-controls="box2">View More..</button> </h5></strong>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine2.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine2.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine2.instructions}}</h4>
+
+                                                <div class="row collapse" id="box2" aria-expanded="false">
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine4.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine4.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine4.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine5.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine5.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine5.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine6.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine6.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine6.instructions}}</h4>
+                                                        <strong><h5><button  data-toggle="collapse" data-target="#box3"
+                                                                             aria-controls="box3" onclick="this.innerHTML=='View Less..' ">View More..</button> </h5></strong>
+                                                    </div>
+
                                                 </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine3.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine3.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine3.instructions}}</h4>
-                                                    <strong><h5><button data-toggle="collapse" data-target="#box2"
-                                                                        aria-controls="box2">View More..</button> </h5></strong>
+                                                <div class="row collapse" id="box3" aria-expanded="false">
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine7.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine7.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine7.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine8.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine8.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine8.instructions}}</h4>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <h4>Drug Name           : {{prescription.medicine9.name}}</h4>
+                                                        <h4>Quantity            : {{prescription.medicine9.cards}}</h4>
+                                                        <h4>Instructions on Use : {{prescription.medicine9.instructions}}</h4>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <div class="row collapse" id="box2" aria-expanded="false">
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine4.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine4.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine4.instructions}}</h4>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine5.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine5.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine5.instructions}}</h4>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine6.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine6.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine6.instructions}}</h4>
-                                                    <strong><h5><button  data-toggle="collapse" data-target="#box3"
-                                                                        aria-controls="box3" onclick="this.innerHTML=='View Less..' ">View More..</button> </h5></strong>
-                                                </div>
-
+                                            <br/><br/>
+                                            <div class="alert alert-success collapse" id="dispense" aria-expanded="false" ng-controller="DrugXController">
+                                                <h2>Total Price is : </h2>
+                                                <h4>Your Cart : </h4>
+                                                <h3>{{prescription.medicine9.name}} | {{prescription.medicine8.name}} | {{prescription.medicine7.name}} | {{prescription.medicine6.name}} | {{prescription.medicine9.name}}
+                                                    | {{prescription.medicine5.name}} | {{prescription.medicine4.name}} | {{prescription.medicine3.name}} | {{prescription.medicine2.name}} | {{prescription.medicine1.name}} </h3><br/>
+                                                <button class="btn btn-block btn-success btn-lg" onclick="successPayment();">Pay</button>
                                             </div>
-                                            <div class="row collapse" id="box3" aria-expanded="false">
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine7.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine7.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine7.instructions}}</h4>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine8.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine8.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine8.instructions}}</h4>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <h4>Drug Name           : {{prescription.medicine9.name}}</h4>
-                                                    <h4>Quantity            : {{prescription.medicine9.cards}}</h4>
-                                                    <h4>Instructions on Use : {{prescription.medicine9.instructions}}</h4>
-                                                </div>
-                                            </div>
+                                        </tr>
+                                        <script type="application/javascript">
+                                            function successPayment() {
+                                                swal('Payment Done Successfully!!');
+                                            }
+                                            function alertOnSave() {
+                                                swal('Prescription Saved Successfully!!');
+                                            }
+                                        </script>
 
-
-
-
-                                        </div>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             <!--User Search -->
@@ -622,7 +636,8 @@
                                     </div>
                                 </div>
                                 <!--UserList-->
-                                <div class="row">
+
+                                <div class="row" >
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -645,18 +660,14 @@
                                             <td>{{user.userType}} </td>
                                             <td>{{user.email}}</td>
                                             <td><button class="btn btn-primary" data-toggle="collapse" data-target="#userForm"
-                                                        aria-controls="prescriptionForm" ng-click="setObject(user)">Add Prescription</button></td>
+                                                        aria-controls="prescriptionForm" ng-click="setUserForPrescription(user)">Add Prescription</button></td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
 
-                            </div>
 
-                            <!--TABLE ENDS-->
-
-
-                            </div>
+                         </div>
                         </div>
                     </div>
                 </div>

@@ -49,6 +49,9 @@ const DrugSchema = new Schema({
     batchNo :{
             type : String
 
+    },
+    price:{
+        type: Number
     }
 
 //     vendors: [{

@@ -2,14 +2,26 @@
  * Created by Sk on 7/1/2017.
  */
 
-$(document).ready(function() {
+// const express = require('express'),
+//     mongoose = require('mongoose');
+//
+// mongoose.set('debug', false);
+//
+// const UserModel = mongoose.model('User');
+// var sum = UserModel.find().then(users=>{
+//     users.filter(function(value){
+//         return value.userType == "Patient";
+//     }).length;
+//     console.log(sum)
+// });
 
+$(document).ready(function() {
 
 
     var doughnutData = {
         labels: ["Patient","Doctors","Pharmacists" ],
         datasets: [{
-            data: [500,50,10],
+            data: [520,50,10],
             backgroundColor: ["#a3e1d4","#dedede","#9CC3DA"]
         }]
     } ;
@@ -51,14 +63,14 @@ var lineData = {
     datasets: [
 
         {
-            label: "Data 1",
+            label: "Doctor Channelling ",
             backgroundColor: 'rgba(26,179,148,0.5)',
             borderColor: "rgba(26,179,148,0.7)",
             pointBackgroundColor: "rgba(26,179,148,1)",
             pointBorderColor: "#fff",
-            data: [28, 48, 40, 19, 86, 27, 90]
+            data: [50000, 48000, 62000, 65000, 49000, 63000, 67000]
         },{
-            label: "Data 2",
+            label: "Drug Sell Income",
             backgroundColor: 'rgba(220, 220, 220, 0.5)',
             pointBorderColor: "#fff",
             data: [65, 59, 80, 81, 56, 55, 40]

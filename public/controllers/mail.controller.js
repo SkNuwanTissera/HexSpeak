@@ -16,6 +16,10 @@ angular.module('PharmacyApp').controller('MailController',['$scope','MailService
                 MailService.add(mail).then(() => {
                     console.log('Mail Sending.....');
                     $scope.mail = mail;
+                    setTimeout(function(){
+                        swal("Email Was Send To '"+mail.email+"' !");
+                    }, 3800);
+
                 });
 
             };

@@ -25,33 +25,33 @@ Router.route('/')
         });
 
     })
-//adding drug details to the system
-    .post(function (req,res) {
-        var drug = new DrugModel();
-        drug.drugName = req.body.drugName;
-        drug.drugType = req.body.drugType;
-        drug.manufacturer = req.body.manufacturer;
-        drug.genericName = req.body.genericName;
-        drug.dateOfManufacture =req.body.dateOfManufacture;
-        drug.category = req.body.category;
-        drug.dateOfExp = req.body.dateOfExp;
-        drug.quantity = req.body.quantity;
-        drug.batchNo = req.body.batchNo;
-        //drug.vendors = req.body.vendors;
-        console.log("cALL"+req.body.name);
-        res.json(drug);
-        drug.save(function (err)
-        {
-            if(err)
-            {
-                res.send(err);
-            }
-            //res.json({message: req.body.drugName + ' drug created'});
-            console.log("ssss");
-
-        });
-
-    });
+// //adding drug details to the system
+//     .post(function (req,res) {
+//         var drug = new DrugModel();
+//         drug.drugName = req.body.drugName;
+//         drug.drugType = req.body.drugType;
+//         drug.manufacturer = req.body.manufacturer;
+//         drug.genericName = req.body.genericName;
+//         drug.dateOfManufacture =req.body.dateOfManufacture;
+//         drug.category = req.body.category;
+//         drug.dateOfExp = req.body.dateOfExp;
+//         drug.quantity = req.body.quantity;
+//         drug.batchNo = req.body.batchNo;
+//         //drug.vendors = req.body.vendors;
+//         console.log("cALL"+req.body.name);
+//         res.json(drug);
+//         drug.save(function (err)
+//         {
+//             if(err)
+//             {
+//                 res.send(err);
+//             }
+//             //res.json({message: req.body.drugName + ' drug created'});
+//             console.log("ssss");
+//
+//         });
+//
+//     });
 
 
 
@@ -75,18 +75,18 @@ Router.get('/:id', (req, res) => {
         res.sendStatus(500);
     });
 });
-//
-// Router.post('/', (req, res) => {
-//     const drug = new DrugModel(req.body);
-//     drug.save().then(drug => {
-//         res.json(drug);
-//     }).catch(err => {
-//         console.error(err);
-//         res.sendStatus(500);
-//     });
-//     res.json({message:"fuck yea!"});
-// });
-//
+
+Router.post('/', (req, res) => {
+    const drug = new DrugModel(req.body);
+    drug.save().then(drug => {
+        res.json(drug);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });
+
+});
+
 Router.put('/:id', (req, res) => {
     const drug = req.body;
     delete drug._id;

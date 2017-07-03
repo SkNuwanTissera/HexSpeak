@@ -7,12 +7,12 @@ mongoose.set('debug', false);
 
 const UserModel = mongoose.model('User');
 
-
 const Router = express.Router();
 
 Router.get('/', (req, res) => {
 
         UserModel.find().then(users => {
+           // var UserCount = users.length;
         res.json(users);
 
     }).catch(err => {
@@ -62,20 +62,5 @@ Router.delete('/:id', (req, res) => {
     });
 });
 
-Router.post('/:id/comments', (req, res) => {
-    let comment = new CommentModel(req.body);
-    const userId = req.params.id;
-    comment.user = userId;
-    comment.save().then(commentDb => {
-        return UserModel.findByIdAndUpdate(userId, {$push: {"comments": commentDb._id}})
-    }).then(() => {
-        return UserModel.findById(userId).populate('comments').exec();
-    }).then(userDb => {
-        res.json(userDb);
-    }).catch(err => {
-        console.error(err);
-        res.sendStatus(500);
-    });
-});
 
 module.exports = Router;

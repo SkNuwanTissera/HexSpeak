@@ -7,11 +7,11 @@ const app = require('../server.js');
 
 const agent = request.agent(app);
 
-const noOfCurrentVendors = 6;
+const noOfCurrentVendors = 4;
 
 describe('Vendor route Test', function () {
     //Creating a sample vendor obj
-    const vendor = {'firstName':'Tharindu','lastName':'Perera','address':'Colombo3','tp':'0777112233','email':'dev@gmail.com','company':'ABCpvtLtd'};
+    const vendor = {'firstName':'Tharindu','lastName':'Perera','sellingDrugs':['Drug1','Drug2'],'address':'Colombo3','tp':'0777112233','email':'dev@gmail.com','company':'ABCpvtLtd'};
 
     //Adding an unit test for saving the new vendor by calling the route
     it('should add new vendor', (done) => {
