@@ -20,7 +20,7 @@ angular.module('PharmacyApp').controller('VendorController', ['$scope', 'VendorS
             if(fName==""||lName==""||mobile==""||address==""||email==""||company==""){
                 valid=false;
                 swal({
-                        title: "Some Required Fields Are Empty?",
+                        title: "Some Required Fields Are Empty!",
                         text: "Except Selling Drugs All Other Fields are Required!",
                         type: "warning",
                         showCancelButton: false,

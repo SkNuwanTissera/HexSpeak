@@ -84,6 +84,14 @@ app.use('/drugs',DrugRouter);
 app.use('/prescriptions',PrescriptionRouter);
 
 
+app.get('/app/placeorder', (req, res, next) => {
+    res.sendFile(__dirname + '/public/vendor.sendmail.html');
+});
+
+app.get('/app/orders', (req, res, next) => {
+    res.sendFile(__dirname + '/public/vendor.order.html');
+});
+
 app.get('/app/vendors', (req, res, next) => {
     res.sendFile(__dirname + '/public/vendor.html');
 });
