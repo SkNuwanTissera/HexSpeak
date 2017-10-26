@@ -7,7 +7,7 @@
 //             templateUrl: 'prescription.html',
 //             controller: 'PrescriptionController'
 //         })
-//         .when('/user', {
+//         .when('/userX', {
 //             templateUrl: 'views/home.html',
 //         })
 //         .otherwise({
