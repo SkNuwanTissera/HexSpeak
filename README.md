@@ -6,9 +6,10 @@
 
 ## Actions
 `
-1. Run 'npm install'`
-`2. Run 'bower install'`
-`3. Run 'npm start' to start application."# HexSpeak" `
+1. Run npm instal
+2. Run 'bower install
+3. Run 'npm start' to start application."# HexSpeak"
+`
 
 ## Nuwan Tissera
 ## sliit.sk95@gmail.com
